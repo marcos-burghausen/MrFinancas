@@ -27,6 +27,12 @@
 - [Exportar para Calendário]()
 - [Realizar Backup/Restauração]()
 
+## Diagramas
+
+- [Diagrama de Classes](./diagramas/classes.md)
+- [Sequência: Cadastrar Usuário](./diagramas/sequencia-cadastrar-usuario.md)
+- [Sequência: Criar Lançamento](./diagramas/sequencia-criar-lancamento.md)
+
 ## Requisitos
 
 - [Requisitos Funcionais e Não Funcionais](./docs/requisitos/requisitos.md)
