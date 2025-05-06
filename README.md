@@ -4,7 +4,13 @@
 
 - [Cadastro de Usuário](./docs/fluxos/cadastroUsuario.md)
 - [Login](./docs/fluxos/login.md)
-- [Gerenciamento de Lançamentos](./docs/fluxos/cadastroLancamentos.md)
+- [Gerenciamento de Contas](./docs/fluxos/gerenciamentoContas.md)
+- [Gerenciamento de Cartão de Crédito](./docs/fluxos/gerenciamento%20de%20cartoes.md)
+- [Gerenciamento de Categorias](./docs/fluxos/gerenciamentoCategorias.md)
+- [Configurações de Notificações](./docs/fluxos/configuracaoNotificacoes.md)
+- [Exportação para Calendario](./docs/fluxos/exportaçãoCalendario.md)
+- [Configuração de Perfil](./docs/fluxos/configuracaoPerfil)
+- [Backup e Restauração](./docs/fluxos/backup.md)
 
 ## Requisitos
 
