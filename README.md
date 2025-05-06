@@ -12,6 +12,21 @@
 - [Configuração de Perfil](./docs/fluxos/configuracaoPerfil)
 - [Backup e Restauração](./docs/fluxos/backup.md)
 
+## Casos de Uso
+
+- [Cadastrar Usuário]()
+- [Fazer Login]()
+- [Criar Lançamento]()
+- [Visualizar/Editar/Excluir Lançamento]()
+- [Gerar Relatório]()
+- [Gerenciar Conta]()
+- [Gerenciar Cartão]()
+- [Visualizar Fatura]()
+- [Gerenciar Categoria/Subcategoria]()
+- [Configurar Notificações]()
+- [Exportar para Calendário]()
+- [Realizar Backup/Restauração]()
+
 ## Requisitos
 
 - [Requisitos Funcionais e Não Funcionais](./docs/requisitos/requisitos.md)
