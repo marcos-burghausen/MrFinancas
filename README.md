@@ -39,9 +39,9 @@ obs:essa documentação ainda esta em desenvolvimento/planejamento
 
 ## 📋 Sobre o Projeto
 
-MrFinancas é um sistema de gestão financeira pessoal desenvolvido para ajudar pessoas a controlar suas finanças, monitorar receitas e despesas, e tomar decisões financeiras mais inteligentes.
+Apaixonado pelo mercado financeiro, desenvolvi o MrFinanças a partir de uma necessidade pessoal: criar uma aplicação prática para consolidar meus estudos e atender às metas do meu Plano de Desenvolvimento Individual (PDI). Como usuário de um aplicativo pago de gestão financeira, decidi construir uma solução própria, mais acessível e personalizada.
 
-O projeto nasceu da necessidade de um sistema simples, eficiente e acessível para controle financeiro pessoal, reunindo todas as funcionalidades essenciais em uma única plataforma.
+O MrFinanças é um sistema de gestão financeira pessoal projetado para capacitar pessoas a organizar suas finanças, monitorar receitas e despesas e tomar decisões financeiras mais inteligentes. Simples, eficiente e intuitivo, o projeto reúne funcionalidades essenciais em uma única plataforma, oferecendo uma alternativa prática para o controle financeiro pessoal. Para futuras versões, pretendo expandir o sistema com um módulo de controle de investimentos voltado para profissionais do mercado financeiro, agregando ainda mais valor à gestão patrimonial.
 
 ## 🎯 Objetivo
 
