@@ -1,87 +1,516 @@
-# Introdução
+# MrFinancas - Sistema de Gestão Financeira Pessoal
 
-## Objetivo
+obs:essa documentação ainda esta em desenvolvimento/planejamento
 
-O objetivo do aplicativo é fornecer uma ferramenta abrangente para o controle de finanças pessoais e, futuramente, para o gerenciamento de investimentos. Ele visa resolver problemas comuns enfrentados por indivíduos ao tentar organizar suas finanças, como a falta de visibilidade sobre despesas e receitas, dificuldade em planejar orçamentos e a necessidade de monitorar investimentos de forma eficiente.
+![Logo MrFinancas](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/logo.png)
 
-## Funcionalidades Principais
+[![Versão](https://img.shields.io/badge/Versão-0.0.5-blue.svg)](https://github.com/marcos-burghausen/MrFinancas/releases)
+[![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas)
 
-1. **Cadastro de Usuários**:
-      - Métodos de Cadastro/Login: Tradicional, Facebook, Google e LinkedIn.
-      - Perfis de Usuário: USER, TRADER, USER_TRADER, ADMIM, FULL.
+## 📑 Índice
 
-2. **Lançamentos**:
-      - Tipos de Lançamentos: Despesas, receitas, despesas de cartão de crédito, estornos.
-      - Categorias e Subcategorias: Específicas para receitas e despesas.
-      - Vinculação: Lançamentos vinculados a contas ou cartões de crédito.
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Objetivo](#-objetivo)
+- [Funcionalidades](#-funcionalidades-principais)
+- [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
+- [Arquitetura do Sistema](#-arquitetura-do-sistema)
+- [Instalação e Configuração](#-instalação-e-configuração)
+- [Estrutura do Projeto](#%EF%B8%8F-estrutura-do-projeto)
+- [Modelos do Sistema](#-modelos-do-sistema)
+- [Documentação](#-documentação-completa)
+- [Fluxos do Sistema](#-fluxos-do-sistema)
+- [Casos de Uso](#-casos-de-uso)
+- [Diagramas](#-diagramas)
+- [API](#-api)
+- [Testes](#-testes)
+- [Roadmap](#%EF%B8%8F-roadmap)
+- [Como Contribuir](#-como-contribuir)
+- [Segurança e Privacidade](#-segurança-e-privacidade)
+- [FAQ](#-perguntas-frequentes-faq)
+- [Licença](#-licença)
+- [Contato](#-contato)
 
-3. **Contas e Cartões de Crédito**:
-      - Cadastro de Contas: Usuário pode cadastrar contas bancárias.
-      - Cadastro de Cartões de Crédito: Cartões vinculados a contas.
-      - Categorias: Contas e cartões possuem categorias e subcategorias.
-      - Ícones: Ícones personalizados com cores escolhidas pelo usuário.
+## 📋 Sobre o Projeto
 
-4. **Perfil do Usuário**:
-      - Avatar: Inserir/alterar avatar.
-      - Dados Pessoais: Inserir/alterar endereço, documentos, etc.
-      - Troca de Senha: Opção para trocar senha.
-      - Notificações: Escolher se deseja receber notificações e quando (no dia ou até 3 dias antes).
+MrFinancas é um sistema de gestão financeira pessoal desenvolvido para ajudar pessoas a controlar suas finanças, monitorar receitas e despesas, e tomar decisões financeiras mais inteligentes.
 
-5. **Relatórios e Gráficos**:
-      - Relatórios: Mensais, trimestrais e anuais.
-      - Gráficos: Visualização de despesas e receitas.
+O projeto nasceu da necessidade de um sistema simples, eficiente e acessível para controle financeiro pessoal, reunindo todas as funcionalidades essenciais em uma única plataforma.
 
-6. **Alertas e Notificações**:
-      - Alertas: Vencimentos de contas, limites de gastos, estornos de cartão de crédito.
-      - Notificações: Mudanças significativas nas finanças.
+## 🎯 Objetivo
 
-7. **Orçamento**:
-      - Planejamento: Ferramentas para planejamento de orçamento mensal e anual.
-      - Monitoramento: Monitorar cumprimento do orçamento e alertar sobre desvios.
+O objetivo do MrFinancas é fornecer uma ferramenta abrangente para o controle de finanças pessoais e, futuramente, para o gerenciamento de investimentos. Ele visa resolver problemas comuns enfrentados por indivíduos ao tentar organizar suas finanças, como:
 
-# Documentação do Aplicativo de Finanças Pessoal
+- Falta de visibilidade sobre despesas e receitas
+- Dificuldade em planejar orçamentos
+- Organização de contas a pagar e receber
+- Acompanhamento de faturas de cartão de crédito
+- Monitoramento de investimentos de forma eficiente
+- Criação de metas financeiras realistas
 
-## Fluxos de Usuário
+## 🚀 Funcionalidades Principais
+
+### 1. **Cadastro de Usuários**
+
+- **Métodos de Cadastro/Login**:
+  - Tradicional (e-mail e senha)
+  - Facebook
+  - Google
+  - LinkedIn
+- **Perfis de Usuário**:
+  - USER: Acesso básico à gestão financeira
+  - TRADER: Acesso ao módulo de investimentos
+  - USER_TRADER: Acesso completo à gestão financeira e investimentos
+  - ADMIN: Acesso administrativo ao sistema
+  - FULL: Acesso completo a todas as funcionalidades
+
+### 2. **Lançamentos Financeiros**
+
+- **Tipos de Lançamentos**:
+  - Despesas (fixas e variáveis)
+  - Receitas (fixas e variáveis)
+  - Despesas de cartão de crédito
+  - Estornos e reembolsos
+- **Características**:
+  - Categorização e subcategorização
+  - Recorrência (única, mensal, semanal, anual)
+  - Anexos de comprovantes
+  - Notas e observações
+  - Status (pago, pendente, atrasado)
+
+### 3. **Contas e Cartões de Crédito**
+
+- **Contas**:
+  - Múltiplas contas bancárias
+  - Saldo inicial e atual
+  - Histórico de transações
+  - Extratos personalizados
+- **Cartões de Crédito**:
+  - Vinculação a contas bancárias
+  - Controle de limite
+  - Fechamento e vencimento de fatura
+  - Parcelamento de compras
+
+### 4. **Perfil do Usuário**
+
+- Avatar personalizado
+- Dados pessoais e endereço
+- Preferências de sistema
+- Gerenciamento de dispositivos conectados
+- Configurações de privacidade
+
+### 5. **Relatórios e Gráficos**
+
+- **Tipos de Relatórios**:
+  - Diários, semanais, mensais, trimestrais e anuais
+  - Comparativos entre períodos
+  - Previsões com base em histórico
+- **Visualizações**:
+  - Gráficos de pizza para distribuição de despesas
+  - Gráficos de linha para evolução financeira
+  - Gráficos de barras para comparativos
+
+### 6. **Alertas e Notificações**
+
+- Avisos de vencimento de contas
+- Alertas de limite de cartão
+- Notificações de estornos
+- Avisos de desvios do orçamento
+- Lembretes personalizáveis
+
+### 7. **Orçamento Financeiro**
+
+- Planejamento mensal e anual
+- Metas por categoria
+- Acompanhamento em tempo real
+- Recomendações de ajustes
+- Comparativo entre planejado e realizado
+
+### 8. **Recursos Adicionais**
+
+- Exportação para calendários (Google, Outlook)
+- Backup e restauração de dados
+- Sincronização entre dispositivos
+- Modo offline com sincronização posterior
+- Importação de extratos bancários (CSV, OFX)
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+
+- **Framework Principal**: Vue.js 3
+- **UI Framework**: Vuetify 3
+- **Gerenciamento de Estado**: Pinia
+- **Roteamento**: Vue Router
+- **HTTP Client**: Axios
+- **Gráficos**: Chart.js e D3.js
+- **Calendário**: FullCalendar
+- **Formatação de Datas**: Moment.js
+
+### Backend
+
+- **Linguagem**: PHP 8.2+
+- **Framework**: Laravel 10
+- **Banco de Dados**: MySQL 8.0
+- **Cache**: Redis
+- **API**: RESTful com autenticação JWT
+- **Filas e Jobs**: Laravel Queue
+
+### DevOps
+
+- **Controle de Versão**: Git e GitHub
+- **CI/CD**: GitHub Actions
+- **Containerização**: Docker
+- **Hospedagem**: AWS (Amazon Web Services)
+- **Monitoramento**: New Relic
+
+### Ferramentas de Desenvolvimento
+
+- **IDE**: Visual Studio Code, PHPStorm
+- **Testes**: PHPUnit, Jest
+- **Linting**: ESLint, PHP_CodeSniffer
+- **Documentação**: OpenAPI (Swagger)
+
+## 🏗 Arquitetura do Sistema
+
+O MrFinancas utiliza uma arquitetura cliente-servidor com separação clara entre frontend e backend:
+
+### Camada de Apresentação (Frontend)
+
+- Interface responsiva baseada em componentes Vue.js
+- PWA (Progressive Web App) para funcionamento offline
+- Design mobile-first com adaptação para todos os dispositivos
+
+### Camada de Aplicação (Backend)
+
+- API RESTful para comunicação com o frontend
+- Controladores para lógica de negócios
+- Serviços para operações complexas
+- Middleware para autenticação e autorização
+
+### Camada de Dados
+
+- Modelos Eloquent ORM
+- Migrações e seeds para estrutura de banco
+- Validação de dados com regras de negócio
+
+### Integração
+
+- Webhooks para serviços externos
+- WebSockets para atualizações em tempo real
+- Filas assíncronas para operações pesadas
+
+## 📦 Instalação e Configuração
+
+### Pré-requisitos
+
+- Node.js (v16+)
+- PHP 8.2+
+- Composer
+- MySQL 8.0
+- Redis (opcional, para cache)
+- Git
+
+### Backend
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/marcos-burghausen/MrFinancas.git
+cd MrFinancas/backend
+```
+
+2. Instale as dependências:
+
+```bash
+composer install
+```
+
+3. Configure o ambiente:
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. Configure o banco de dados no arquivo `.env`
+
+5. Execute as migrações:
+
+```bash
+php artisan migrate --seed
+```
+
+6. Inicie o servidor:
+
+```bash
+php artisan serve
+```
+
+### Frontend
+
+1. Navegue para o diretório frontend:
+
+```bash
+cd ../frontend
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Configure o ambiente:
+
+```bash
+cp .env.example .env.local
+```
+
+4. Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+5. Para build de produção:
+
+```bash
+npm run build
+```
+
+## 🗂️ Estrutura do Projeto
+
+```
+MrFinancas/
+├── backend/              # Código backend (Laravel)
+│   ├── app/              # Core da aplicação
+│   │   ├── Console/      # Comandos de CLI
+│   │   ├── Exceptions/   # Manipulação de exceções
+│   │   ├── Http/         # Controladores, Middleware, Requests
+│   │   ├── Models/       # Modelos Eloquent
+│   │   └── Services/     # Serviços da aplicação
+│   ├── config/           # Configurações
+│   ├── database/         # Migrações e seeds
+│   ├── routes/           # Definição de rotas
+│   └── tests/            # Testes automatizados
+├── frontend/             # Código frontend (Vue.js)
+│   ├── public/           # Arquivos públicos
+│   ├── src/              # Código fonte
+│   │   ├── assets/       # Recursos estáticos
+│   │   ├── components/   # Componentes Vue
+│   │   ├── layouts/      # Layouts da aplicação
+│   │   ├── pages/        # Páginas da aplicação
+│   │   ├── router/       # Configuração de rotas
+│   │   ├── services/     # Serviços e APIs
+│   │   ├── store/        # Gerenciamento de estado (Pinia)
+│   │   └── utils/        # Utilitários
+│   └── tests/            # Testes de frontend
+├── docs/                 # Documentação
+│   ├── api/              # Documentação da API
+│   ├── diagramas/        # Diagramas UML
+│   ├── fluxos/           # Fluxos do sistema
+│   ├── guias/            # Guias de utilização
+│   ├── imagens/          # Imagens da documentação
+│   └── requisitos/       # Documentação de requisitos
+└── docker/               # Configurações Docker
+    ├── mysql/            # Configurações do MySQL
+    ├── nginx/            # Configurações do Nginx
+    ├── php/              # Configurações do PHP
+    └── redis/            # Configurações do Redis
+```
+
+## 📊 Modelos do Sistema
+
+### Diagrama de Entidade-Relacionamento
+
+![Diagrama ER](https://github.com/marcos-burghausen/MrFinancas/raw/master/docs/imagens/diagrama_er.png)
+
+### Interface do Usuário
+
+![Interface](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/interface.png)
+
+### Protótipos de Tela
+
+- [Dashboard Principal](./docs/wireframes/dashboard.md)
+- [Tela de Lançamentos](./docs/wireframes/lancamentos.md)
+- [Relatórios Financeiros](./docs/wireframes/relatorios.md)
+- [Configurações de Perfil](./docs/wireframes/perfil.md)
+
+## 📚 Documentação Completa
+
+A documentação completa do projeto está disponível nos seguintes locais:
+
+- **Documentação online**: [docs.mrfinancas.com](https://docs.mrfinancas.com) (em breve)
+- **Documentação local**: Diretório `/docs` do repositório
+- **Wiki do GitHub**: [wiki](https://github.com/marcos-burghausen/MrFinancas/wiki) (em breve)
+
+## 🔄 Fluxos do Sistema
+
+Todos os fluxos principais do sistema estão documentados em detalhe:
 
 - [Cadastro de Usuário](./docs/fluxos/cadastroUsuario.md)
-- [Login](./docs/fluxos/login.md)
+- [Login e Autenticação](./docs/fluxos/login.md)
 - [Gerenciamento de Contas](./docs/fluxos/gerenciamentoContas.md)
-- [Gerenciamento de Cartão de Crédito](./docs/fluxos/gerenciamento%20de%20cartoes.md)
+- [Gerenciamento de Cartão de Crédito](./docs/fluxos/gerenciamento_de_cartoes.md)
 - [Gerenciamento de Categorias](./docs/fluxos/gerenciamentoCategorias.md)
 - [Configurações de Notificações](./docs/fluxos/configuracaoNotificacoes.md)
-- [Exportação para Calendario](./docs/fluxos/exportaçãoCalendario.md)
-- [Configuração de Perfil](./docs/fluxos/configuracaoPerfil)
+- [Exportação para Calendário](./docs/fluxos/exportacaoCalendario.md)
+- [Configuração de Perfil](./docs/fluxos/configuracaoPerfil.md)
 - [Backup e Restauração](./docs/fluxos/backup.md)
+- [Geração de Relatórios](./docs/fluxos/geracao_relatorios.md)
+- [Planejamento Orçamentário](./docs/fluxos/planejamento_orcamentario.md)
 
-## Casos de Uso
+## 👤 Casos de Uso
 
-- [Cadastrar Usuário]()
-- [Fazer Login]()
-- [Criar Lançamento]()
-- [Visualizar/Editar/Excluir Lançamento]()
-- [Gerar Relatório]()
-- [Gerenciar Conta]()
-- [Gerenciar Cartão]()
-- [Visualizar Fatura]()
-- [Gerenciar Categoria/Subcategoria]()
-- [Configurar Notificações]()
-- [Exportar para Calendário]()
-- [Realizar Backup/Restauração]()
+Os casos de uso detalham as interações do usuário com o sistema:
 
-## Diagramas
+- [Cadastrar Usuário](./docs/casos_uso/cadastrar_usuario.md)
+- [Fazer Login](./docs/casos_uso/fazer_login.md)
+- [Criar Lançamento](./docs/casos_uso/criar_lancamento.md)
+- [Visualizar/Editar/Excluir Lançamento](./docs/casos_uso/gerenciar_lancamento.md)
+- [Gerar Relatório](./docs/casos_uso/gerar_relatorio.md)
+- [Gerenciar Conta](./docs/casos_uso/gerenciar_conta.md)
+- [Gerenciar Cartão](./docs/casos_uso/gerenciar_cartao.md)
+- [Visualizar Fatura](./docs/casos_uso/visualizar_fatura.md)
+- [Gerenciar Categoria/Subcategoria](./docs/casos_uso/gerenciar_categoria.md)
+- [Configurar Notificações](./docs/casos_uso/configurar_notificacoes.md)
+- [Exportar para Calendário](./docs/casos_uso/exportar_calendario.md)
+- [Realizar Backup/Restauração](./docs/casos_uso/backup_restauracao.md)
+- [Criar e Gerenciar Metas](./docs/casos_uso/gerenciar_metas.md)
+- [Importar Extrato Bancário](./docs/casos_uso/importar_extrato.md)
 
-- [Diagrama de Classes](./diagramas/classes.md)
-- [Sequência: Cadastrar Usuário](./diagramas/sequencia-cadastrar-usuario.md)
-- [Sequência: Criar Lançamento](./diagramas/sequencia-criar-lancamento.md)
+## 📐 Diagramas
 
-## Requisitos
+Os diagramas UML fornecem uma visualização técnica do sistema:
 
-- [Requisitos Funcionais e Não Funcionais](./docs/requisitos/requisitos.md)
+- [Diagrama de Classes](./docs/diagramas/classes.md)
+- [Diagrama de Componentes](./docs/diagramas/componentes.md)
+- [Diagrama de Implantação](./docs/diagramas/implantacao.md)
+- [Sequência: Cadastrar Usuário](./docs/diagramas/sequencia-cadastrar-usuario.md)
+- [Sequência: Criar Lançamento](./docs/diagramas/sequencia-criar-lancamento.md)
+- [Sequência: Gerar Relatório](./docs/diagramas/sequencia-gerar-relatorio.md)
+- [Sequência: Processar Fatura](./docs/diagramas/sequencia-processar-fatura.md)
 
-## API
+## 🔌 API
 
-- [Documentação da API](./docs/api/swagger.yaml)
+A documentação completa da API REST está disponível para integrações:
 
-## Guias
+- [Visão Geral da API](./docs/api/visao_geral.md)
+- [Autenticação e Autorização](./docs/api/autenticacao.md)
+- [Endpoints de Usuários](./docs/api/endpoints_usuarios.md)
+- [Endpoints de Lançamentos](./docs/api/endpoints_lancamentos.md)
+- [Endpoints de Contas](./docs/api/endpoints_contas.md)
+- [Endpoints de Cartões](./docs/api/endpoints_cartoes.md)
+- [Endpoints de Categorias](./docs/api/endpoints_categorias.md)
+- [Endpoints de Relatórios](./docs/api/endpoints_relatorios.md)
+- [Documentação Swagger](./docs/api/swagger.md)
 
-- [Configuração do Ambiente](./docs/guias/setup.md)
+## 🧪 Testes
+
+O projeto inclui uma suíte de testes automatizados:
+
+### Testes de Backend
+
+```bash
+cd backend
+php artisan test
+```
+
+### Testes de Frontend
+
+```bash
+cd frontend
+npm run test
+```
+
+### Cobertura de Testes
+
+```bash
+cd backend
+php artisan test --coverage
+```
+
+## 🗺️ Roadmap
+
+Nossa visão para o futuro do MrFinancas:
+
+### Versão 1.1 (Q3 2025)
+
+- [ ] Implementação de notificações para pagamentos próximos
+- [ ] Melhorias na interface de usuário e experiência
+
+### Versão 1.2 (Q4 2025)
+
+- [ ] Integração com instituições financeiras via Open Banking
+- [ ] Importação automática de transações
+
+### Versão 2.0 (Q1 2026)
+
+- [ ] Aplicativo móvel nativo para iOS e Android
+- [ ] Sincronização em tempo real entre dispositivos
+
+### Versão 2.5 (Q3 2026)
+
+- [ ] Sistema de metas financeiras avançado
+- [ ] Recomendações personalizadas de economia
+
+### Versão 3.0 (2027)
+
+- [ ] Módulo completo de investimentos
+- [ ] Análise preditiva e inteligência artificial
+
+## 👥 Como Contribuir
+
+Sua contribuição é bem-vinda! Siga os passos:
+
+1. Verifique as [issues abertas](https://github.com/marcos-burghausen/MrFinancas/issues) ou crie uma nova
+2. Faça um fork do projeto
+3. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+4. Faça commit das suas alterações (`git commit -m 'Add some AmazingFeature'`)
+5. Faça push para a branch (`git push origin feature/AmazingFeature`)
+6. Abra um Pull Request
+
+Para mais detalhes, consulte nosso [Guia de Contribuição](CONTRIBUTING.md).
+
+## 🔒 Segurança e Privacidade
+
+O MrFinancas prioriza a segurança dos dados financeiros dos usuários:
+
+- Criptografia de dados sensíveis
+- Autenticação de dois fatores
+- Conformidade com LGPD/GDPR
+- Backups regulares e automáticos
+- Monitoramento de atividades suspeitas
+
+Para reportar vulnerabilidades de segurança, entre em contato diretamente via security@mrfinancas.com.
+
+## ❓ Perguntas Frequentes (FAQ)
+
+**P: O MrFinancas é gratuito?**
+R: Sim, o MrFinancas possui uma versão gratuita com funcionalidades básicas. Existem planos premium com recursos avançados.
+
+**P: Posso acessar meus dados offline?**
+R: Sim, o aplicativo web funciona como PWA, permitindo acesso offline e sincronização posterior.
+
+**P: Como são armazenados meus dados financeiros?**
+R: Todos os dados são criptografados e armazenados em servidores seguros. Você tem controle total sobre seus dados.
+
+<!-- **P: O sistema integra com meu banco?**
+R: Estamos desenvolvendo integrações com os principais bancos através de APIs de Open Banking. -->
+
+Para mais perguntas, consulte nossa [FAQ completa](./docs/faq.md).
+
+## 📜 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+## 📞 Contato
+
+Marcos Burghausen - [GitHub](https://github.com/marcos-burghausen)
+
+Link do Projeto: [https://github.com/marcos-burghausen/MrFinancas](https://github.com/marcos-burghausen/MrFinancas)
+
+---
+
+⭐️ Se este projeto foi útil para você, considere deixar uma estrela no GitHub!

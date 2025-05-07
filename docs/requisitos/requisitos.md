@@ -1,159 +1,194 @@
-# [ <- VOLTAR](../../README.md)
+# Requisitos do Sistema MrFinancas
 
-# Requisitos do Aplicativo de Finanças Pessoal
+Este documento descreve os requisitos funcionais e não funcionais do sistema MrFinancas, um aplicativo de gestão financeira pessoal.
 
-## 1. Introdução
+## Requisitos Funcionais
 
-Este documento define os requisitos funcionais e não funcionais para o desenvolvimento de um aplicativo de finanças pessoais, com foco na versão inicial (v1) e preparação para futuras expansões (ex.: controle de investimentos).
+### RF01 - Gestão de Usuários
 
-**Stack Tecnológica:**
+#### RF01.1 - Cadastro de Usuário
 
-- **Frontend:** Vue.js 3
-- **Backend:** Laravel
-- **Containerização:** Docker
-- **Banco de dados:** MySQL
+- O sistema deve permitir o cadastro de novos usuários com e-mail e senha
+- O sistema deve oferecer cadastro via redes sociais (Google, Facebook, LinkedIn)
+- O sistema deve validar e-mails únicos
+- O sistema deve exigir senhas com pelo menos 8 caracteres, incluindo letras, números e caracteres especiais
 
-## 2. Requisitos Funcionais
+#### RF01.2 - Autenticação de Usuário
 
-### 2.1. Gerenciamento de Usuários
+- O sistema deve permitir o login através de e-mail e senha
+- O sistema deve permitir o login via redes sociais integradas
+- O sistema deve oferecer recuperação de senha via e-mail
+- O sistema deve implementar autenticação de dois fatores (opcional para o usuário)
 
-| ID    | Requisito                                                                                                                                                                                                                                                                                               | Versão             |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| RF1.1 | O sistema deve permitir cadastro de usuários com e-mail/senha ou via OAuth (Facebook, Google, LinkedIn)                                                                                                                                                                                                 | Facebook na v1     |
-| RF1.2 | O sistema deve exigir verificação de e-mail para cadastros tradicionais                                                                                                                                                                                                                                 | v1                 |
-| RF1.3 | O sistema deve oferecer recuperação de senha via e-mail                                                                                                                                                                                                                                                 | v1                 |
-| RF1.4 | O sistema deve suportar autenticação multifator (MFA) opcional (ex.: SMS, app autenticador)                                                                                                                                                                                                             | v1                 |
-| RF1.5 | O sistema deve permitir logout de sessões ativas em outros dispositivos                                                                                                                                                                                                                                 | v1                 |
-| RF1.6 | O sistema deve suportar diferentes tipos de usuários (USER, TRADER, USER_TRADER, ADMIN, FULL)                                                                                                                                                                                                           | Somente USER na v1 |
-| RF1.7 | O sistema deve permitir ao usuário gerenciar seu perfil, incluindo:<br>- Alteração de avatar (upload ou escolha predefinida)<br>- Alteração de senha<br>- Configuração de notificações (vencimentos, antecedência de até 3 dias, horário)<br>- Cadastro/edição de dados pessoais (endereço, documentos) | v1                 |
-| RF1.8 | O sistema deve permitir desativar notificações específicas                                                                                                                                                                                                                                              | v1                 |
+#### RF01.3 - Perfis de Usuário
 
-### 2.2. Gerenciamento de Lançamentos
+- O sistema deve suportar os seguintes perfis:
+  - USER: Acesso básico à gestão financeira
+  - TRADER: Acesso ao módulo de investimentos
+  - USER_TRADER: Acesso completo à gestão financeira e investimentos
+  - ADMIN: Acesso administrativo ao sistema
+  - FULL: Acesso completo a todas as funcionalidades
 
-| ID    | Requisito                                                                                                                                                                                                                             | Versão |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| RF2.1 | O sistema deve permitir cadastro de lançamentos (despesas, receitas, despesas de cartão de crédito, estornos)                                                                                                                         | v1     |
-| RF2.2 | Cada lançamento deve ser vinculado a uma conta ou cartão de crédito                                                                                                                                                                   | v1     |
-| RF2.3 | Cada lançamento deve ser associado a uma categoria/subcategoria                                                                                                                                                                       | v1     |
-| RF2.4 | O sistema deve suportar lançamentos recorrentes (ex.: diário, semanal, mensal)                                                                                                                                                        | v1     |
-| RF2.5 | O sistema deve permitir marcar lançamentos como pendente, efetivado ou cancelado                                                                                                                                                      | v1     |
-| RF2.6 | O sistema deve suportar transferências entre contas                                                                                                                                                                                   | v1     |
-| RF2.7 | O sistema deve permitir importação/exportação de lançamentos em CSV                                                                                                                                                                   | v1     |
-| RF2.8 | O sistema deve exibir relatórios financeiros, incluindo:<br>- Gráficos de despesas/receitas por categoria/subcategoria<br>- Balanço mensal (receitas - despesas)<br>- Histórico de lançamentos filtrável por data, categoria ou conta | v1     |
+#### RF01.4 - Gerenciamento de Perfil
 
-### 2.3. Gerenciamento de Contas e Cartões
+- O sistema deve permitir ao usuário editar seus dados pessoais
+- O sistema deve permitir ao usuário alterar sua senha
+- O sistema deve permitir ao usuário configurar suas preferências de notificação
+- O sistema deve permitir ao usuário fazer upload de avatar personalizado
 
-| ID    | Requisito                                                                                                                           | Versão             |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| RF3.1 | O sistema deve permitir cadastro/edição de contas com nome, categoria, ícone e cor personalizáveis                                  | v1                 |
-| RF3.2 | O sistema deve permitir cadastro/edição de cartões de crédito vinculados a uma conta, com nome, limite, ícone e cor personalizáveis | v1                 |
-| RF3.3 | O sistema deve gerenciar faturas de cartões, exibindo gastos acumulados e vencimentos                                               | v1                 |
-| RF3.4 | O sistema deve suportar conciliação bancária (comparação de lançamentos com extratos importados)                                    | v1                 |
-| RF3.5 | O sistema deve permitir configuração de múltiplas moedas (preparação para internacionalização)                                      | Preparação para v2 |
+### RF02 - Gestão de Contas Bancárias
 
-### 2.4. Gerenciamento de Categorias
+#### RF02.1 - Cadastro de Contas
 
-| ID    | Requisito                                                                                             | Versão |
-| ----- | ----------------------------------------------------------------------------------------------------- | ------ |
-| RF4.1 | O sistema deve permitir cadastro/edição de categorias e subcategorias com ícone e cor personalizáveis | v1     |
-| RF4.2 | O sistema deve oferecer categorias/subcategorias predefinidas (ex.: Alimentação, Transporte)          | v1     |
-| RF4.3 | O sistema deve suportar hierarquia de subcategorias (múltiplos níveis)                                | v1     |
-| RF4.4 | O sistema deve validar para evitar categorias duplicadas ou conflitantes                              | v1     |
+- O sistema deve permitir o cadastro de múltiplas contas bancárias
+- O sistema deve registrar nome da conta, instituição financeira, tipo de conta, saldo inicial e cor/ícone
+- O sistema deve permitir marcar contas como ativas ou inativas
+- O sistema deve permitir definir uma conta como principal
 
-### 2.5. Notificações e Integrações
+#### RF02.2 - Gerenciamento de Contas
 
-| ID    | Requisito                                                                                                    | Versão               |
-| ----- | ------------------------------------------------------------------------------------------------------------ | -------------------- |
-| RF5.1 | O sistema deve enviar notificações de vencimentos (no dia ou até 3 dias antes, com horário configurável)     | v1                   |
-| RF5.2 | O sistema deve permitir integração com calendários externos (ex.: Google Calendar) para exportar vencimentos | v1                   |
-| RF5.3 | O sistema deve suportar notificações push (mobile) e por e-mail                                              | Somente e-mail na v1 |
+- O sistema deve permitir editar informações da conta
+- O sistema deve permitir excluir contas (com validação de lançamentos existentes)
+- O sistema deve calcular o saldo atual com base nos lançamentos
+- O sistema deve permitir reconciliar o saldo com o saldo real do banco
 
-### 2.6. Experiência do Usuário
+#### RF02.3 - Visualização de Contas
 
-| ID    | Requisito                                                                                | Versão  |
-| ----- | ---------------------------------------------------------------------------------------- | ------- |
-| RF6.1 | O sistema deve oferecer suporte a temas claro/escuro                                     | v1      |
-| RF6.2 | O sistema deve permitir uso offline, com sincronização posterior                         | Após v1 |
-| RF6.3 | O sistema deve oferecer metas financeiras (ex.: economizar X por mês) com acompanhamento | v1      |
-| RF6.4 | O sistema deve permitir backup/restauração de dados do usuário                           | v1      |
+- O sistema deve exibir lista de contas com saldos atuais
+- O sistema deve exibir extrato detalhado de transações por conta
+- O sistema deve permitir filtrar transações por período, categoria e valor
+- O sistema deve permitir buscar transações por descrição
 
-### 2.7. Administração (Preparação para v2)
+### RF03 - Gestão de Cartões de Crédito
 
-| ID    | Requisito                                                                                                        | Versão             |
-| ----- | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
-| RF7.1 | O sistema deve suportar RBAC (controle de acesso baseado em papéis) para futuros tipos de usuários (ADMIN, FULL) | Preparação para v2 |
-| RF7.2 | O sistema deve registrar logs de atividades críticas (ex.: alterações de lançamentos)                            | Preparação para v2 |
+#### RF03.1 - Cadastro de Cartões
 
-## 3. Requisitos Não Funcionais
+- O sistema deve permitir o cadastro de múltiplos cartões de crédito
+- O sistema deve registrar nome, bandeira, limite, dia de fechamento, dia de vencimento e cor/ícone
+- O sistema deve permitir vincular cartão a uma conta bancária
+- O sistema deve permitir marcar cartões como ativos ou inativos
 
-### 3.1. Desempenho
+#### RF03.2 - Gerenciamento de Cartões
 
-| ID     | Requisito                                                                               | Versão |
-| ------ | --------------------------------------------------------------------------------------- | ------ |
-| RNF1.1 | O sistema deve responder a interações do usuário em até 2 segundos em condições normais | v1     |
-| RNF1.2 | O sistema deve suportar até 1.000 usuários simultâneos na v1                            | v1     |
+- O sistema deve permitir editar informações do cartão
+- O sistema deve permitir excluir cartões (com validação de lançamentos existentes)
+- O sistema deve calcular fatura atual com base nos lançamentos
+- O sistema deve calcular limite disponível do cartão
 
-### 3.2. Segurança
+#### RF03.3 - Fatura de Cartão
 
-| ID     | Requisito                                                            | Versão |
-| ------ | -------------------------------------------------------------------- | ------ |
-| RNF2.1 | Todas as comunicações devem usar HTTPS (SSL/TLS)                     | v1     |
-| RNF2.2 | Senhas devem ser armazenadas com criptografia bcrypt                 | v1     |
-| RNF2.3 | Dados sensíveis (ex.: documentos) devem ser criptografados no banco  | v1     |
-| RNF2.4 | O sistema deve implementar proteção contra CSRF, XSS e SQL Injection | v1     |
-| RNF2.5 | O sistema deve validar todas as entradas no frontend e backend       | v1     |
+- O sistema deve gerar faturas mensais por cartão
+- O sistema deve permitir visualizar faturas fechadas e abertas
+- O sistema deve exibir lançamentos agrupados por categoria na fatura
+- O sistema deve suportar lançamentos parcelados com controle de parcelas
 
-### 3.3. Escalabilidade
+### RF04 - Gestão de Categorias
 
-| ID     | Requisito                                                                       | Versão |
-| ------ | ------------------------------------------------------------------------------- | ------ |
-| RNF3.1 | O sistema deve ser modular para suportar novos módulos (ex.: investimentos)     | v1     |
-| RNF3.2 | O sistema deve usar cache (ex.: Redis) para consultas frequentes                | v1     |
-| RNF3.3 | O sistema deve suportar processamento assíncrono (ex.: filas para notificações) | v1     |
+#### RF04.1 - Cadastro de Categorias
 
-### 3.4. Usabilidade
+- O sistema deve permitir o cadastro de categorias de receitas e despesas
+- O sistema deve permitir o cadastro de subcategorias vinculadas a categorias
+- O sistema deve associar cores e ícones às categorias
+- O sistema deve fornecer categorias padrão pré-cadastradas
 
-| ID     | Requisito                                                                                         | Versão |
-| ------ | ------------------------------------------------------------------------------------------------- | ------ |
-| RNF4.1 | A interface deve ser responsiva (desktop, tablet, mobile)                                         | v1     |
-| RNF4.2 | O sistema deve seguir diretrizes de acessibilidade (ex.: WCAG 2.1)                                | v1     |
-| RNF4.3 | O sistema deve ser intuitivo, com tempo de aprendizado inferior a 10 minutos para usuários comuns | v1     |
+#### RF04.2 - Gerenciamento de Categorias
 
-### 3.5. Manutenibilidade
+- O sistema deve permitir editar nome, cor e ícone das categorias
+- O sistema deve permitir desativar categorias (sem excluir lançamentos)
+- O sistema deve permitir mesclar categorias
+- O sistema deve validar exclusão de categorias usadas em lançamentos
 
-| ID     | Requisito                                                                                      | Versão |
-| ------ | ---------------------------------------------------------------------------------------------- | ------ |
-| RNF5.1 | O código deve seguir padrões de boas práticas (ex.: PSR-12 para PHP, ESLint para JavaScript)   | v1     |
-| RNF5.2 | O sistema deve ter cobertura de testes automatizados (unitários, integração) de pelo menos 80% | v1     |
-| RNF5.3 | O sistema deve usar CI/CD para testes e deploys automáticos                                    | v1     |
+### RF05 - Gestão de Lançamentos Financeiros
 
-### 3.6. Compatibilidade
+#### RF05.1 - Cadastro de Lançamentos
 
-| ID     | Requisito                                                                              | Versão |
-| ------ | -------------------------------------------------------------------------------------- | ------ |
-| RNF6.1 | O sistema deve ser compatível com navegadores modernos (Chrome, Firefox, Safari, Edge) | v1     |
-| RNF6.2 | O sistema deve suportar dispositivos iOS e Android (via PWA ou app nativo no futuro)   | v1     |
+- O sistema deve permitir o cadastro de receitas e despesas
+- O sistema deve permitir lançamentos em contas bancárias e cartões de crédito
+- O sistema deve registrar descrição, valor, data, categoria, conta/cartão e observações
+- O sistema deve permitir anexar comprovantes aos lançamentos
 
-## 4. Considerações
+#### RF05.2 - Tipos de Lançamentos
 
-- Os requisitos foram estruturados para a v1, com preparação para expansões (ex.: investimentos, tipos de usuários adicionais).
-- Fluxogramas serão usados para mapear fluxos de usuário, seguidos por diagramas UML (casos de uso, classes) na fase de design técnico.
-- A stack (Vue.js 3, Laravel, Docker, MySQL) é adequada para os requisitos listados.
+- O sistema deve suportar receitas (fixas e variáveis)
+- O sistema deve suportar despesas (fixas e variáveis)
+- O sistema deve suportar transferências entre contas
+- O sistema deve suportar pagamentos de faturas de cartão
+- O sistema deve suportar estornos e reembolsos
 
-## 5. Matriz de Rastreabilidade
+#### RF05.3 - Lançamentos Recorrentes
 
-| Módulo         | Total Requisitos | Requisitos v1 | Preparação v2 |
-| -------------- | ---------------- | ------------- | ------------- |
-| Usuários       | 8                | 8             | 1             |
-| Lançamentos    | 8                | 8             | 0             |
-| Contas/Cartões | 5                | 4             | 1             |
-| Categorias     | 4                | 4             | 0             |
-| Notificações   | 3                | 3             | 0             |
-| UX             | 4                | 3             | 1             |
-| Administração  | 2                | 0             | 2             |
-| **Total RF**   | **34**           | **30**        | **4**         |
-| **Total RNF**  | **17**           | **17**        | **0**         |
+- O sistema deve permitir criar lançamentos recorrentes (diários, semanais, mensais, anuais)
+- O sistema deve gerar automaticamente lançamentos futuros com base na recorrência
+- O sistema deve permitir editar série de lançamentos recorrentes
+- O sistema deve permitir encerrar séries recorrentes
 
----
+#### RF05.4 - Gerenciamento de Lançamentos
 
-_Última atualização: Maio 2025_
+- O sistema deve permitir editar informações dos lançamentos
+- O sistema deve permitir excluir lançamentos
+- O sistema deve permitir marcar lançamentos como pagos/recebidos
+- O sistema deve permitir adiar lançamentos para outra data
+
+### RF06 - Relatórios e Análises
+
+#### RF06.1 - Relatórios Básicos
+
+- O sistema deve gerar relatório de receitas e despesas por período
+- O sistema deve gerar relatório de gastos por categoria
+- O sistema deve gerar relatório de evolução patrimonial
+- O sistema deve gerar extrato consolidado de todas as contas
+
+#### RF06.2 - Gráficos e Visualizações
+
+- O sistema deve exibir gráfico de pizza de despesas por categoria
+- O sistema deve exibir gráfico de barras comparando receitas e despesas
+- O sistema deve exibir gráfico de linha de evolução patrimonial
+- O sistema deve exibir dashboard com resumo financeiro
+
+#### RF06.3 - Análises Avançadas
+
+- O sistema deve calcular médias de gastos por categoria
+- O sistema deve identificar tendências de gastos
+- O sistema deve comparar períodos (mês atual vs. anterior, ano atual vs. anterior)
+- O sistema deve fornecer previsões com base em lançamentos recorrentes
+
+### RF07 - Orçamento e Planejamento
+
+#### RF07.1 - Definição de Orçamento
+
+- O sistema deve permitir definir valores de orçamento por categoria
+- O sistema deve permitir definir orçamentos mensais e anuais
+- O sistema deve permitir copiar orçamento do mês anterior
+- O sistema deve permitir ajustar orçamento durante o período
+
+#### RF07.2 - Acompanhamento de Orçamento
+
+- O sistema deve exibir comparativo entre valores orçados e realizados
+- O sistema deve calcular percentual de utilização do orçamento
+- O sistema deve alertar quando gastos ultrapassarem o orçamento
+- O sistema deve exibir projeção de gastos com base no histórico
+
+#### RF07.3 - Metas Financeiras
+
+- O sistema deve permitir criar metas de economia
+- O sistema deve permitir definir prazo e valor alvo da meta
+- O sistema deve calcular progresso da meta com base em lançamentos vinculados
+- O sistema deve exibir projeção de cumprimento da meta
+
+### RF08 - Alertas e Notificações
+
+#### RF08.1 - Configuração de Alertas
+
+- O sistema deve permitir configurar notificações para contas a pagar/receber
+- O sistema deve permitir configurar alertas de saldo baixo em contas
+- O sistema deve permitir configurar alertas de limite de cartão
+- O sistema deve permitir definir antecedência para notificações (1-7 dias)
+
+#### RF08.2 - Entrega de Notificações
+
+- O sistema deve enviar notificações por e-mail
+- O sistema deve exibir notificações no aplicativo
+- O sistema deve suportar notificações push no navegador
+- O sistema deve permitir marcar notificações como lidas
+
+###

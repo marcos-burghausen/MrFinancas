@@ -1,3 +1,5 @@
+# [ <- VOLTAR](../../README.md)
+
 # Diagrama de Sequência: Cadastrar Usuário
 
 Este diagrama descreve as interações entre o usuário, o frontend (Vue.js), o backend (Laravel) e o sistema de e-mails para o cadastro tradicional com verificação de e-mail.
@@ -36,6 +38,7 @@ sequenceDiagram
 ## Descrição
 
 ### Fluxo Principal
+
 1. O usuário acessa a tela de cadastro no frontend (Vue.js).
 2. Preenche o formulário (e-mail, senha, nome) e envia.
 3. O frontend faz uma requisição POST ao backend (endpoint `/api/register`).
@@ -47,11 +50,13 @@ sequenceDiagram
 9. O backend valida o token, atualiza o status do usuário e redireciona para a tela de login.
 
 ### Fluxos Alternativos
+
 - **A1**: E-mail já registrado → Backend retorna erro 422 ("E-mail já registrado").
 - **A2**: Token inválido → Backend retorna erro ("Link inválido") e oferece reenvio.
 - **A3**: Erro no envio de e-mail → Backend registra falha e notifica ADMIN (futuro).
 
 ### Notas Técnicas
+
 - **Frontend**: Usa Vue.js com Axios para requisições HTTP.
 - **Backend**: Usa Laravel com Eloquent para manipulação do modelo `User`.
   - Endpoint: `POST /api/register` (controlador `AuthController`).

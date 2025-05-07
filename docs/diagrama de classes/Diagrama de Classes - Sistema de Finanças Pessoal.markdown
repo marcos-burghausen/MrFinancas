@@ -1,3 +1,5 @@
+# [ <- VOLTAR](../../README.md)
+
 # Diagrama de Classes: Sistema de Finanças Pessoal
 
 Este diagrama modela as entidades principais do sistema, seus atributos, métodos e relacionamentos, alinhados com o backend Laravel (modelos Eloquent) e o banco MySQL.
@@ -119,6 +121,7 @@ classDiagram
 ## Descrição
 
 ### Classes e Relacionamentos
+
 - **User**: Representa o usuário, com autenticação (e-mail/senha, OAuth) e perfil (avatar, tema).
   - Relacionamentos: Possui múltiplas contas, transações, cartões, categorias e notificações.
 - **Account**: Representa contas bancárias, com saldo e personalização (ícone, cor).
@@ -135,6 +138,7 @@ classDiagram
   - Relacionamentos: Vinculada a cartão.
 
 ### Notas Técnicas
+
 - **Laravel**: Cada classe corresponde a um modelo Eloquent, com tabelas no MySQL.
   - Ex.: `User` mapeia para tabela `users`, com colunas `id`, `name`, `email`, etc.
   - Relacionamentos são implementados com métodos Eloquent (ex.: `hasMany`, `belongsTo`).

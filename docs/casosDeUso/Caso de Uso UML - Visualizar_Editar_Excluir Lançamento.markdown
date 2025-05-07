@@ -1,3 +1,5 @@
+# [ <- VOLTAR](../../README.md)
+
 # Caso de Uso UML: Visualizar/Editar/Excluir Lançamento
 
 ## Diagrama de Caso de Uso
@@ -13,20 +15,25 @@ classDiagram
 ```
 
 ## Descrição
+
 Permite que o usuário visualize, edite ou exclua lançamentos financeiros.
 
 ## Atores
+
 - **Primário**: Usuário
 
 ## Pré-condições
+
 - Usuário está autenticado.
 - Existem lançamentos cadastrados.
 
 ## Pós-condições
+
 - Lista de lançamentos é exibida.
 - Lançamento é editado/excluído, com saldos atualizados.
 
 ## Fluxo Principal
+
 1. Usuário acessa tela de lançamentos.
 2. Aplica filtros (data, categoria, conta).
 3. Visualiza lista filtrada.
@@ -36,15 +43,18 @@ Permite que o usuário visualize, edite ou exclua lançamentos financeiros.
 5. Retorna à lista.
 
 ## Fluxos Alternativos
+
 - **A1**: Nenhum lançamento encontrado → Exibe mensagem "Sem resultados".
 - **A2**: Dados inválidos na edição → Exibe erro e retorna ao formulário.
 
 ## Regras de Negócio
+
 - Exclusão de lançamentos recorrentes remove instâncias futuras.
 - Edição atualiza saldos e notificações.
 - Filtros suportam até 1 ano de dados.
 
 ## Integrações
+
 - Atualiza saldos de contas/cartões.
 - Integra com relatórios e faturas.
 - Exclusão remove notificações associadas.
