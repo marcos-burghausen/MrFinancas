@@ -1,3 +1,5 @@
+🔙 [Retornar à documentação principal](../../README.md)
+
 # Requisitos do Sistema MrFinancas
 
 Este documento descreve os requisitos funcionais e não funcionais do sistema MrFinancas, um aplicativo de gestão financeira pessoal.

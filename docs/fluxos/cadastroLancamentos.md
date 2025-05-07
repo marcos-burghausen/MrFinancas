@@ -1,4 +1,4 @@
-# [ <- VOLTAR](../../README.md)
+🔙 [Retornar à documentação principal](../../README.md)
 
 # Fluxograma de Gerenciamento de Lançamentos Financeiros
 

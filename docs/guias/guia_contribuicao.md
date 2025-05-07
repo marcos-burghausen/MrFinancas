@@ -1,3 +1,5 @@
+🔙 [Retornar à documentação principal](../../README.md)
+
 # Guia de Contribuição para o MrFinancas
 
 Obrigado pelo seu interesse em contribuir para o MrFinancas! Este documento fornece diretrizes e instruções para ajudar você a contribuir com o projeto.

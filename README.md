@@ -4,9 +4,14 @@ obs:essa documentação ainda esta em desenvolvimento/planejamento
 
 ![Logo MrFinancas](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/logo.png)
 
+## 📌 Status do Projeto
+
 [![Versão](https://img.shields.io/badge/Versão-0.0.5-blue.svg)](https://github.com/marcos-burghausen/MrFinancas/releases)
-[![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas)
+
+<!-- [![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)](LICENSE) -->
+
+[![Status](https://img.shields.io/badge/Status-Aguardando%20Início-red.svg)](https://github.com/marcos-burghausen/MrFinancas)
+[![Documentação](https://img.shields.io/badge/📚_Documentação-Em_Desenvolvimento-orange)](./docs)
 
 ## 📑 Índice
 
@@ -24,6 +29,7 @@ obs:essa documentação ainda esta em desenvolvimento/planejamento
 - [Diagramas](#-diagramas)
 - [API](#-api)
 - [Testes](#-testes)
+- [Diagrama ER](./docs/guias/user_guide.md)
 - [Roadmap](#%EF%B8%8F-roadmap)
 - [Como Contribuir](#-como-contribuir)
 - [Segurança e Privacidade](#-segurança-e-privacidade)
@@ -324,11 +330,11 @@ MrFinancas/
 
 ### Diagrama de Entidade-Relacionamento
 
-![Diagrama ER](https://github.com/marcos-burghausen/MrFinancas/raw/master/docs/imagens/diagrama_er.png)
+[![Diagrama ER](https://img.shields.io/badge/Diagrama_ER-Atualizado-green?logo=diagramsdotnet&logoColor=white)](https://github.com/marcos-burghausen/MrFinancas/raw/master/docs/imagens/diagrama_er.png)
 
 ### Interface do Usuário
 
-![Interface](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/interface.png)
+[![UI Design](https://img.shields.io/badge/Interface-Protótipo_1.0-blue?logo=figma&logoColor=white)](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/interface.png)
 
 ### Protótipos de Tela
 
@@ -435,27 +441,54 @@ php artisan test --coverage
 
 Nossa visão para o futuro do MrFinancas:
 
-### Versão 1.1 (Q3 2025)
+![Versão](https://img.shields.io/badge/Versão-1.0.0-blue.svg)
+![MVP Status](https://img.shields.io/badge/MVP-Q4_2025-blue)
+[![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas)
+
+- [ ] Autenticação de usuários (e-mail/senha).
+- [ ] Cadastro de receitas/despesas e categorização.
+- [ ] Dashboard com gráficos simples (Chart.js).
+- [ ] Controle básico de contas e cartões.
+- [ ] Notificações por e-mail (vencimentos).
+
+![Versão](https://img.shields.io/badge/Versão-1.1-blue.svg)
+![Release Timeline](https://img.shields.io/badge/Release-Q1_2026-blue)
+
+<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
 
 - [ ] Implementação de notificações para pagamentos próximos
 - [ ] Melhorias na interface de usuário e experiência
 
-### Versão 1.2 (Q4 2025)
+![Versão](https://img.shields.io/badge/Versão-1.2-blue.svg)
+![Release Timeline](https://img.shields.io/badge/Release-Q2_2026-blue)
+
+<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
 
 - [ ] Integração com instituições financeiras via Open Banking
 - [ ] Importação automática de transações
 
-### Versão 2.0 (Q1 2026)
+![Versão](https://img.shields.io/badge/Versão-2.0-blue.svg)
+![Release Timeline](https://img.shields.io/badge/Release-Q3_2026-blue)
+
+<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
 
 - [ ] Aplicativo móvel nativo para iOS e Android
 - [ ] Sincronização em tempo real entre dispositivos
 
-### Versão 2.5 (Q3 2026)
+![Versão](https://img.shields.io/badge/Versão-2.5-blue.svg)
+![Release Timeline](https://img.shields.io/badge/Release-Q4_2026-blue)
+
+<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
 
 - [ ] Sistema de metas financeiras avançado
 - [ ] Recomendações personalizadas de economia
 
 ### Versão 3.0 (2027)
+
+![Versão](https://img.shields.io/badge/Versão-3.0-blue.svg)
+![Release Timeline](https://img.shields.io/badge/Release-Q4_2027-blue)
+
+<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
 
 - [ ] Módulo completo de investimentos
 - [ ] Análise preditiva e inteligência artificial
@@ -471,7 +504,7 @@ Sua contribuição é bem-vinda! Siga os passos:
 5. Faça push para a branch (`git push origin feature/AmazingFeature`)
 6. Abra um Pull Request
 
-Para mais detalhes, consulte nosso [Guia de Contribuição](CONTRIBUTING.md).
+Para mais detalhes, consulte nosso [Guia de Contribuição](./docs/guias/guia_contribuicao.md).
 
 ## 🔒 Segurança e Privacidade
 

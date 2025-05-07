@@ -1,3 +1,5 @@
+🔙 [Retornar à documentação principal](../../README.md)
+
 # Fluxograma de Gerenciamento de Contas
 
 Este documento descreve o processo completo de criação, visualização, edição e exclusão de contas no sistema financeiro.

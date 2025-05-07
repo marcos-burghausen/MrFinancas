@@ -1,4 +1,4 @@
-# [ <- VOLTAR](../../README.md)
+🔙 [Retornar à documentação principal](../../README.md)
 
 # Caso de Uso UML: Cadastrar Usuário
 
