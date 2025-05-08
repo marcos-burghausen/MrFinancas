@@ -1,20 +1,18 @@
 🔙 [Retornar à documentação principal](../../README.md)
 
-# Caso de Uso UML: Visualizar Fatura
+# Caso de Uso: Visualizar Fatura
 
 ## Diagrama de Caso de Uso
 
 ```mermaid
-classDiagram
-    class Usuário {
-        +VisualizarFatura()
-    }
-    Usuário --> Sistema : interage
+usecaseDiagram
+    actor Usuário
+    Usuário --> (Visualizar Fatura)
 ```
 
 ## Descrição
 
-Permite que o usuário visualize faturas de cartões de crédito.
+Permite que o usuário visualize faturas de cartões de crédito, incluindo gastos, vencimento e valor total.
 
 ## Atores
 
@@ -22,32 +20,40 @@ Permite que o usuário visualize faturas de cartões de crédito.
 
 ## Pré-condições
 
-- Usuário está autenticado.
-- Existem cartões com lançamentos.
+- Usuário está autenticado (JWT válido).
+- Existem cartões em `cards` com transações em `transactions`.
 
 ## Pós-condições
 
-- Fatura é exibida (gastos, vencimento, valor total).
+- Fatura é exibida no frontend.
+- Log de visualização é registrado em `logs`.
 
 ## Fluxo Principal
 
-1. Usuário acessa tela de cartões.
+1. Usuário acessa a tela de cartões no frontend.
 2. Seleciona cartão e clica em "Visualizar fatura".
-3. Sistema exibe fatura (gastos, vencimento, valor total).
-4. Retorna à lista.
+3. Frontend envia `GET /api/cards/{id}/invoices`.
+4. Backend consulta `invoices` e `transactions` (filtrado por `card_id`, período).
+5. Retorna: `{ invoice_id, due_date, total_amount, transactions: [] }`.
+6. Frontend exibe fatura com Vuetify (tabela de transações, vencimento, total).
+7. Usuário pode exportar em PDF via jsPDF.
+8. Backend registra ação em `logs` (ação: `view_invoice`).
 
 ## Fluxos Alternativos
 
-- **A1**: Nenhuma fatura disponível → Exibe mensagem "Sem fatura".
+- **A1**: Nenhuma fatura disponível → Backend retorna erro 404 ("Nenhuma fatura disponível").
 
 ## Regras de Negócio
 
-- Faturas são geradas com base no ciclo do cartão.
-- Incluem todos os lançamentos do período.
-- Valor total é calculado automaticamente.
+- Faturas baseadas no ciclo (`cards.closing_date` a `due_date`).
+- `total_amount` soma `transactions.amount` do período.
+- Exportação PDF inclui título, período e transações.
 
-## Integrações
+## Notas Técnicas
 
-- Usa dados de lançamentos.
-- Integra com notificações de vencimento.
-- Faturas são exportáveis em PDF.
+- **Frontend**: Vue.js, Vuetify, jsPDF.
+- **Backend**: Laravel, Eloquent (modelos `Card`, `Invoice`, `Transaction`).
+- **Endpoint**: `GET /api/cards/{id}/invoices?period=YYYY-MM` → `{ invoices: [] }`.
+- **Banco**: Tabela `invoices` (`card_id`, `due_date`, `total_amount`); `transactions` (`card_id`, `amount`); `logs` (`action`).
+- **Integrações**: jsPDF, notificações de vencimento.
+- **Segurança**: JWT, validação de `user_id`.

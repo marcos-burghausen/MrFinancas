@@ -1,60 +1,49 @@
 # MrFinancas - Sistema de Gestão Financeira Pessoal
 
-obs:essa documentação ainda esta em desenvolvimento/planejamento
+**Nota**: Esta documentação está em desenvolvimento/planejamento.
 
-![Logo MrFinancas](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/logo.png)
+<h1 align="center">
+    <img width="250px" src="./docs/img/logo.png" />
+</h1>
 
 ## 📌 Status do Projeto
 
 [![Versão](https://img.shields.io/badge/Versão-0.0.5-blue.svg)](https://github.com/marcos-burghausen/MrFinancas/releases)
-
-<!-- [![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)](LICENSE) -->
-
-[![Status](https://img.shields.io/badge/Status-Aguardando%20Início-red.svg)](https://github.com/marcos-burghausen/MrFinancas)
+[![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas)
 [![Documentação](https://img.shields.io/badge/📚_Documentação-Em_Desenvolvimento-orange)](./docs)
 
 ## 📑 Índice
 
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Objetivo](#-objetivo)
-- [Funcionalidades](#-funcionalidades-principais)
-- [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
-- [Arquitetura do Sistema](#-arquitetura-do-sistema)
-- [Instalação e Configuração](#-instalação-e-configuração)
-- [Estrutura do Projeto](#%EF%B8%8F-estrutura-do-projeto)
-- [Modelos do Sistema](#-modelos-do-sistema)
-- [Documentação](#-documentação-completa)
-- [Fluxos do Sistema](#-fluxos-do-sistema)
-- [Casos de Uso](#-casos-de-uso)
-- [Diagramas](#-diagramas)
-- [API](#-api)
-- [Testes](#-testes)
-- [Diagrama ER](./docs/guias/user_guide.md)
-- [Roadmap](#%EF%B8%8F-roadmap)
-- [Como Contribuir](#-como-contribuir)
-- [Segurança e Privacidade](#-segurança-e-privacidade)
-- [FAQ](#-perguntas-frequentes-faq)
-- [Licença](#-licença)
-- [Contato](#-contato)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Objetivo e Funcionalidades](#objetivo-e-funcionalidades)
+- [Tecnologias e Arquitetura](#tecnologias-e-arquitetura)
+- [Instalação e Configuração](#instalação-e-configuração)
+- [Documentação e Diagramas](#documentação-e-diagramas)
+- [Roadmap e Contribuição](#roadmap-e-contribuição)
+- [Segurança, FAQ e Licença](#segurança-faq-e-licença)
+- [Contato](#contato)
 
 ## 📋 Sobre o Projeto
 
-Apaixonado pelo mercado financeiro, desenvolvi o MrFinanças a partir de uma necessidade pessoal: criar uma aplicação prática para consolidar meus estudos e atender às metas do meu Plano de Desenvolvimento Individual (PDI). Como usuário de um aplicativo pago de gestão financeira, decidi construir uma solução própria, mais acessível e personalizada.
+Como entusiasta mercado financeiro, desenvolvi o MrFinanças a partir de uma necessidade pessoal: criar uma aplicação prática para consolidar meus estudos e atender às metas do meu Plano de Desenvolvimento Individual (PDI). Como usuário de um aplicativo pago de gestão financeira, decidi construir uma solução própria, mais acessível e personalizada.
 
 O MrFinanças é um sistema de gestão financeira pessoal projetado para capacitar pessoas a organizar suas finanças, monitorar receitas e despesas e tomar decisões financeiras mais inteligentes. Simples, eficiente e intuitivo, o projeto reúne funcionalidades essenciais em uma única plataforma, oferecendo uma alternativa prática para o controle financeiro pessoal. Para futuras versões, pretendo expandir o sistema com um módulo de controle de investimentos voltado para profissionais do mercado financeiro, agregando ainda mais valor à gestão patrimonial.
 
-## 🎯 Objetivo
+## 🎯 Objetivo e Funcionalidades
 
-O objetivo do MrFinancas é fornecer uma ferramenta abrangente para o controle de finanças pessoais e, futuramente, para o gerenciamento de investimentos. Ele visa resolver problemas comuns enfrentados por indivíduos ao tentar organizar suas finanças, como:
+### Objetivo
+
+O MrFinanças visa fornecer uma ferramenta abrangente para o controle de finanças pessoais e, futuramente, para o gerenciamento de investimentos. Ele resolve problemas comuns, como:
 
 - Falta de visibilidade sobre despesas e receitas
 - Dificuldade em planejar orçamentos
 - Organização de contas a pagar e receber
 - Acompanhamento de faturas de cartão de crédito
-- Monitoramento de investimentos de forma eficiente
+- Monitoramento eficiente de investimentos
 - Criação de metas financeiras realistas
 
-## 🚀 Funcionalidades Principais
+### Funcionalidades Principais
 
 ### 1. **Cadastro de Usuários**
 
@@ -140,9 +129,11 @@ O objetivo do MrFinancas é fornecer uma ferramenta abrangente para o controle d
 - Modo offline com sincronização posterior
 - Importação de extratos bancários (CSV, OFX)
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias e Arquitetura
 
-### Frontend
+### Tecnologias Utilizadas
+
+**Frontend**
 
 - **Framework Principal**: Vue.js 3
 - **UI Framework**: Vuetify 3
@@ -153,7 +144,7 @@ O objetivo do MrFinancas é fornecer uma ferramenta abrangente para o controle d
 - **Calendário**: FullCalendar
 - **Formatação de Datas**: Moment.js
 
-### Backend
+**Backend**
 
 - **Linguagem**: PHP 8.2+
 - **Framework**: Laravel 10
@@ -162,7 +153,7 @@ O objetivo do MrFinancas é fornecer uma ferramenta abrangente para o controle d
 - **API**: RESTful com autenticação JWT
 - **Filas e Jobs**: Laravel Queue
 
-### DevOps
+**DevOps**
 
 - **Controle de Versão**: Git e GitHub
 - **CI/CD**: GitHub Actions
@@ -170,14 +161,14 @@ O objetivo do MrFinancas é fornecer uma ferramenta abrangente para o controle d
 - **Hospedagem**: AWS (Amazon Web Services)
 - **Monitoramento**: New Relic
 
-### Ferramentas de Desenvolvimento
+**Ferramentas de Desenvolvimento**
 
-- **IDE**: Visual Studio Code, PHPStorm
+- **IDE**: Visual Studio Code
 - **Testes**: PHPUnit, Jest
 - **Linting**: ESLint, PHP_CodeSniffer
 - **Documentação**: OpenAPI (Swagger)
 
-## 🏗 Arquitetura do Sistema
+### Arquitetura do Sistema
 
 O MrFinancas utiliza uma arquitetura cliente-servidor com separação clara entre frontend e backend:
 
@@ -210,11 +201,11 @@ O MrFinancas utiliza uma arquitetura cliente-servidor com separação clara entr
 
 ### Pré-requisitos
 
-- Node.js (v16+)
+- Node.js v22
 - PHP 8.2+
 - Composer
 - MySQL 8.0
-- Redis (opcional, para cache)
+- Redis
 - Git
 
 ### Backend
@@ -285,264 +276,161 @@ npm run dev
 npm run build
 ```
 
-## 🗂️ Estrutura do Projeto
+### Solução de Problemas
 
-```
-MrFinancas/
-├── backend/              # Código backend (Laravel)
-│   ├── app/              # Core da aplicação
-│   │   ├── Console/      # Comandos de CLI
-│   │   ├── Exceptions/   # Manipulação de exceções
-│   │   ├── Http/         # Controladores, Middleware, Requests
-│   │   ├── Models/       # Modelos Eloquent
-│   │   └── Services/     # Serviços da aplicação
-│   ├── config/           # Configurações
-│   ├── database/         # Migrações e seeds
-│   ├── routes/           # Definição de rotas
-│   └── tests/            # Testes automatizados
-├── frontend/             # Código frontend (Vue.js)
-│   ├── public/           # Arquivos públicos
-│   ├── src/              # Código fonte
-│   │   ├── assets/       # Recursos estáticos
-│   │   ├── components/   # Componentes Vue
-│   │   ├── layouts/      # Layouts da aplicação
-│   │   ├── pages/        # Páginas da aplicação
-│   │   ├── router/       # Configuração de rotas
-│   │   ├── services/     # Serviços e APIs
-│   │   ├── store/        # Gerenciamento de estado (Pinia)
-│   │   └── utils/        # Utilitários
-│   └── tests/            # Testes de frontend
-├── docs/                 # Documentação
-│   ├── api/              # Documentação da API
-│   ├── diagramas/        # Diagramas UML
-│   ├── fluxos/           # Fluxos do sistema
-│   ├── guias/            # Guias de utilização
-│   ├── imagens/          # Imagens da documentação
-│   └── requisitos/       # Documentação de requisitos
-└── docker/               # Configurações Docker
-    ├── mysql/            # Configurações do MySQL
-    ├── nginx/            # Configurações do Nginx
-    ├── php/              # Configurações do PHP
-    └── redis/            # Configurações do Redis
-```
+- **Erro de conexão com MySQL**: Verifique as credenciais no `.env`
+- **Versão Node.js incompatível**: Use `nvm` para instalar v18+
+- Consulte [FAQ](./docs/faq.md) para mais detalhes
 
-## 📊 Modelos do Sistema
+## 📚 Documentação e Diagramas
 
-### Diagrama de Entidade-Relacionamento
+### Documentação
 
-[![Diagrama ER](https://img.shields.io/badge/Diagrama_ER-Atualizado-green?logo=diagramsdotnet&logoColor=white)](https://github.com/marcos-burghausen/MrFinancas/raw/master/docs/imagens/diagrama_er.png)
+- [**Requisitos do Sistema**](./docs/requisitos/requisitos.md)
+- [**Manual do Usuário**](./docs/guias/user_guide.md)
 
-### Interface do Usuário
+### Modelos e Diagramas
 
-[![UI Design](https://img.shields.io/badge/Interface-Protótipo_1.0-blue?logo=figma&logoColor=white)](https://github.com/marcos-burghausen/MrFinancas/raw/master/assets/interface.png)
+- [**Diagrama ER**](./docs/diagramas/Diagrama%20ER%20-%20MrFinancas.md)
+- **Protótipos**:
+  - [Dashboard](./docs/wireframes/dashboard.md),
+  - [Lançamentos](./docs/wireframes/lancamentos.md),
+  - [Relatórios](./docs/wireframes/relatorios.md),
+  - [Perfil](./docs/wireframes/perfil.md)
+- **Diagramas UML**:
+  - [Classes](./docs/diagramas/Diagrama%20de%20Classes%20-%20Sistema%20de%20Finanças%20Pessoal.markdown),
+  - [Componentes](./docs/diagramas/Diagrama%20de%20Componentes%20-%20MrFinancas.md),
+  - [Implantação](./docs/diagramas/Diagrama%20de%20Implantação%20-%20MrFinancas.md),
+  - **Sequencia**:
+    - [Cadastrar Usuário](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Cadastrar%20Usuário.markdown),
+    - [Login](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Fazer%20Login.markdown),
+    - [Configurar Notificações](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Configurar%20Notificações.markdown),
+    - [Criar Transação](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Criar%20Lançamento.markdown),
+    - [Exportar para Calendario](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Exportar%20para%20Calendário.markdown),
+    - [Gerar Relatório](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Gerar%20Relatório.markdown),
+    - [Gerenciar Cartão](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Gerenciar%20Cartão.markdown),
+    - [Gerencia Categoria_Subcategoria](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Gerenciar%20Categoria.markdown),
+    - [Gerenciar Conta](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Gerenciar%20Conta.markdown),
+    - [Realizar Backup_Restauração](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Realizar%20Backup%20e%20Restauração.markdown),
+    - [Visualizar Fatura](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Visualizar%20Fatura.markdown),
+    - [Visualizar_Editar_Excluir Transação](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Visualizar,%20Editar%20e%20Excluir%20Transação.markdown),
+    - [Configurar Perfil](./docs/diagramas/Diagrama%20de%20Sequência%20-%20Configurar%20Perfil.markdown)
 
-### Protótipos de Tela
+### Fluxos e Casos de Uso
 
-- [Dashboard Principal](./docs/wireframes/dashboard.md)
-- [Tela de Lançamentos](./docs/wireframes/lancamentos.md)
-- [Relatórios Financeiros](./docs/wireframes/relatorios.md)
-- [Configurações de Perfil](./docs/wireframes/perfil.md)
+- Fluxos:
+  - [Cadastrar Usuário](./docs/fluxos/Fluxo%20-%20Cadastrar%20Usuário.markdown),
+  - [Login](./docs/fluxos/Fluxo%20-%20Fazer%20Login.markdown),
+  - [Configurar Notificações](./docs/fluxos/Fluxo%20-%20Configurar%20Notificações.markdown),
+  - [Criar Transação](./docs/fluxos/Fluxo%20-%20Gerenciar%20Transação.markdown),
+  - [Exportar para Calendário](./docs/fluxos/Fluxo%20-%20Exportar%20para%20Calendário.markdown),
+  - [Gerar Relatório](./docs/fluxos/Fluxo%20-%20Gerar%20Relatório.markdown),
+  - [Gerenciar Cartão](./docs/fluxos/Fluxo%20-%20Gerenciar%20Cartão.markdown),
+  - [Gerencia Categoria_Subcategoria](./docs/fluxos/Fluxo%20-%20Gerenciar%20Categoria.markdown),
+  - [Gerenciar Conta](./docs/fluxos/Fluxo%20-%20Gerenciar%20Conta.markdown),
+  - [Realizar Backup_Restauração](./docs/fluxos/Fluxo%20-%20Realizar%20Backup%20e%20Restauração.markdown),
+  - [Visualizar Fatura](./docs/fluxos/Fluxo%20-%20Visualizar%20Fatura.markdown),
+  - [Visualizar_Editar_Excluir Transação](./docs/fluxos/Fluxo%20-%20Visualizar,%20Editar%20e%20Excluir%20Transação.markdown),
+  - [Configurar Perfil](./docs/fluxos/Fluxo%20-%20Configurar%20Perfil.markdown)
+- Casos de Uso:
+  - [Cadastrar Usuário](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Cadastrar%20Usuario.md),
+  - [Login](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Fazer%20Login.markdown),
+  - [Configurar Notificações](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Configurar%20Notificações.markdown),
+  - [Criar Transação](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Criar%20Transacao.markdown),
+  - [Exportar para Calendário](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Exportar%20para%20Calendário.markdown),
+  - [Gerar Relatório](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Gerar%20Relatório.markdown),
+  - [Gerenciar Cartão](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Gerenciar%20Cartão.markdown),
+  - [Gerencia Categoria_Subcategoria](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Gerenciar%20Categoria_Subcategoria.markdown),
+  - [Gerenciar Conta](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Gerenciar%20Conta.markdown),
+  - [Realizar Backup_Restauração](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Realizar%20Backup_Restauração.markdown),
+  - [Visualizar Fatura](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Visualizar%20Fatura.markdown),
+  - [Visualizar_Editar_Excluir Transação](./docs/casosDeUso/Caso%20de%20Uso%20UML%20-%20Visualizar_Editar_Excluir%20Lançamento.markdown),
+  - [Configurar Perfil](./docs/casosDeUso/Caso%20de%20Uso%20-%20Configurar%20Perfil.markdown)
 
-## 📚 Documentação Completa
+### API
 
-A documentação completa do projeto está disponível nos seguintes locais:
+- [Visão Geral](./docs/api/visao_geral.md)
+- [Swagger](./docs/api/swagger.md)(Em breve)
 
-- **Documentação online**: [docs.mrfinancas.com](https://docs.mrfinancas.com) (em breve)
-- **Documentação local**: Diretório `/docs` do repositório
-- **Wiki do GitHub**: [wiki](https://github.com/marcos-burghausen/MrFinancas/wiki) (em breve)
+## 🗺️ Roadmap e Contribuição
 
-## 🔄 Fluxos do Sistema
+### Roadmap
 
-Todos os fluxos principais do sistema estão documentados em detalhe:
+**Versão 1.0.0 (Q4 2025)**  
+[![Status](https://img.shields.io/badge/MVP-Q4_2025-blue)](https://github.com/marcos-burghausen/MrFinancas)
 
-- [Cadastro de Usuário](./docs/fluxos/cadastroUsuario.md)
-- [Login e Autenticação](./docs/fluxos/login.md)
-- [Gerenciamento de Contas](./docs/fluxos/gerenciamentoContas.md)
-- [Gerenciamento de Cartão de Crédito](./docs/fluxos/gerenciamento_de_cartoes.md)
-- [Gerenciamento de Categorias](./docs/fluxos/gerenciamentoCategorias.md)
-- [Configurações de Notificações](./docs/fluxos/configuracaoNotificacoes.md)
-- [Exportação para Calendário](./docs/fluxos/exportacaoCalendario.md)
-- [Configuração de Perfil](./docs/fluxos/configuracaoPerfil.md)
-- [Backup e Restauração](./docs/fluxos/backup.md)
-- [Geração de Relatórios](./docs/fluxos/geracao_relatorios.md)
-- [Planejamento Orçamentário](./docs/fluxos/planejamento_orcamentario.md)
+- [ ] Autenticação (e-mail/senha, JWT)
+- [ ] Cadastro de receitas/despesas com categorização
+- [ ] Dashboard com gráficos (Chart.js)
+- [ ] Controle de contas e cartões
+- [ ] Notificações por e-mail (vencimentos)
 
-## 👤 Casos de Uso
+**Versão 1.1 (Q1 2026)**
 
-Os casos de uso detalham as interações do usuário com o sistema:
+- [ ] Notificações de pagamentos próximos
+- [ ] Melhorias de UI/UX
 
-- [Cadastrar Usuário](./docs/casos_uso/cadastrar_usuario.md)
-- [Fazer Login](./docs/casos_uso/fazer_login.md)
-- [Criar Lançamento](./docs/casos_uso/criar_lancamento.md)
-- [Visualizar/Editar/Excluir Lançamento](./docs/casos_uso/gerenciar_lancamento.md)
-- [Gerar Relatório](./docs/casos_uso/gerar_relatorio.md)
-- [Gerenciar Conta](./docs/casos_uso/gerenciar_conta.md)
-- [Gerenciar Cartão](./docs/casos_uso/gerenciar_cartao.md)
-- [Visualizar Fatura](./docs/casos_uso/visualizar_fatura.md)
-- [Gerenciar Categoria/Subcategoria](./docs/casos_uso/gerenciar_categoria.md)
-- [Configurar Notificações](./docs/casos_uso/configurar_notificacoes.md)
-- [Exportar para Calendário](./docs/casos_uso/exportar_calendario.md)
-- [Realizar Backup/Restauração](./docs/casos_uso/backup_restauracao.md)
-- [Criar e Gerenciar Metas](./docs/casos_uso/gerenciar_metas.md)
-- [Importar Extrato Bancário](./docs/casos_uso/importar_extrato.md)
+**Versão 1.2 (Q2 2026)**
 
-## 📐 Diagramas
-
-Os diagramas UML fornecem uma visualização técnica do sistema:
-
-- [Diagrama de Classes](./docs/diagramas/classes.md)
-- [Diagrama de Componentes](./docs/diagramas/componentes.md)
-- [Diagrama de Implantação](./docs/diagramas/implantacao.md)
-- [Sequência: Cadastrar Usuário](./docs/diagramas/sequencia-cadastrar-usuario.md)
-- [Sequência: Criar Lançamento](./docs/diagramas/sequencia-criar-lancamento.md)
-- [Sequência: Gerar Relatório](./docs/diagramas/sequencia-gerar-relatorio.md)
-- [Sequência: Processar Fatura](./docs/diagramas/sequencia-processar-fatura.md)
-
-## 🔌 API
-
-A documentação completa da API REST está disponível para integrações:
-
-- [Visão Geral da API](./docs/api/visao_geral.md)
-- [Autenticação e Autorização](./docs/api/autenticacao.md)
-- [Endpoints de Usuários](./docs/api/endpoints_usuarios.md)
-- [Endpoints de Lançamentos](./docs/api/endpoints_lancamentos.md)
-- [Endpoints de Contas](./docs/api/endpoints_contas.md)
-- [Endpoints de Cartões](./docs/api/endpoints_cartoes.md)
-- [Endpoints de Categorias](./docs/api/endpoints_categorias.md)
-- [Endpoints de Relatórios](./docs/api/endpoints_relatorios.md)
-- [Documentação Swagger](./docs/api/swagger.md)
-
-## 🧪 Testes
-
-O projeto inclui uma suíte de testes automatizados:
-
-### Testes de Backend
-
-```bash
-cd backend
-php artisan test
-```
-
-### Testes de Frontend
-
-```bash
-cd frontend
-npm run test
-```
-
-### Cobertura de Testes
-
-```bash
-cd backend
-php artisan test --coverage
-```
-
-## 🗺️ Roadmap
-
-Nossa visão para o futuro do MrFinancas:
-
-![Versão](https://img.shields.io/badge/Versão-1.0.0-blue.svg)
-![MVP Status](https://img.shields.io/badge/MVP-Q4_2025-blue)
-[![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas)
-
-- [ ] Autenticação de usuários (e-mail/senha).
-- [ ] Cadastro de receitas/despesas e categorização.
-- [ ] Dashboard com gráficos simples (Chart.js).
-- [ ] Controle básico de contas e cartões.
-- [ ] Notificações por e-mail (vencimentos).
-
-![Versão](https://img.shields.io/badge/Versão-1.1-blue.svg)
-![Release Timeline](https://img.shields.io/badge/Release-Q1_2026-blue)
-
-<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
-
-- [ ] Implementação de notificações para pagamentos próximos
-- [ ] Melhorias na interface de usuário e experiência
-
-![Versão](https://img.shields.io/badge/Versão-1.2-blue.svg)
-![Release Timeline](https://img.shields.io/badge/Release-Q2_2026-blue)
-
-<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
-
-- [ ] Integração com instituições financeiras via Open Banking
+- [ ] Integração com Open Banking
 - [ ] Importação automática de transações
 
-![Versão](https://img.shields.io/badge/Versão-2.0-blue.svg)
-![Release Timeline](https://img.shields.io/badge/Release-Q3_2026-blue)
+**Versão 2.0 (Q3 2026)**
 
-<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
+- [ ] Aplicativo móvel (iOS/Android)
+- [ ] Sincronização em tempo real
 
-- [ ] Aplicativo móvel nativo para iOS e Android
-- [ ] Sincronização em tempo real entre dispositivos
+**Versão 2.5 (Q4 2026)**
 
-![Versão](https://img.shields.io/badge/Versão-2.5-blue.svg)
-![Release Timeline](https://img.shields.io/badge/Release-Q4_2026-blue)
+- [ ] Sistema de metas financeiras
+- [ ] Recomendações de economia
 
-<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
+**Versão 3.0 (Q4 2027)**
 
-- [ ] Sistema de metas financeiras avançado
-- [ ] Recomendações personalizadas de economia
+- [ ] Módulo de investimentos
+- [ ] Análise preditiva com IA
 
-### Versão 3.0 (2027)
+### Como Contribuir
 
-![Versão](https://img.shields.io/badge/Versão-3.0-blue.svg)
-![Release Timeline](https://img.shields.io/badge/Release-Q4_2027-blue)
+1. Verifique [issues](https://github.com/marcos-burghausen/MrFinancas/issues)
+2. Faça fork do projeto
+3. Crie branch (`git checkout -b feature/NovaFuncionalidade`)
+4. Commit (`git commit -m 'Adiciona NovaFuncionalidade'`)
+5. Push (`git push origin feature/NovaFuncionalidade`)
+6. Abra Pull Request
 
-<!-- [![Status](https://img.shields.io/badge/Status-Em%20Planejamento-yellow.svg)](https://github.com/marcos-burghausen/MrFinancas) -->
+Consulte o [Guia de Contribuição](./docs/guias/guia_contribuicao.md) e ajude a melhorar a documentação em `/docs`.
 
-- [ ] Módulo completo de investimentos
-- [ ] Análise preditiva e inteligência artificial
+## 🔒 Segurança, FAQ e Licença
 
-## 👥 Como Contribuir
+### Segurança e Privacidade
 
-Sua contribuição é bem-vinda! Siga os passos:
+- **Criptografia**: AES-256 para dados sensíveis
+- **Autenticação**: JWT, suporte a 2FA
+- **Conformidade**: LGPD/GDPR
+- **Monitoramento**: New Relic, backups automáticos
+- Reporte vulnerabilidades: security@mrfinancas.com
 
-1. Verifique as [issues abertas](https://github.com/marcos-burghausen/MrFinancas/issues) ou crie uma nova
-2. Faça um fork do projeto
-3. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-4. Faça commit das suas alterações (`git commit -m 'Add some AmazingFeature'`)
-5. Faça push para a branch (`git push origin feature/AmazingFeature`)
-6. Abra um Pull Request
+### Perguntas Frequentes (FAQ)
 
-Para mais detalhes, consulte nosso [Guia de Contribuição](./docs/guias/guia_contribuicao.md).
+- **O MrFinanças é gratuito?**  
+  Sim, com funcionalidades básicas. Planos premium oferecem recursos avançados.
+- **Posso acessar offline?**  
+  Sim, via PWA com sincronização posterior.
+- **Quais formatos de extrato são suportados?**  
+  CSV e OFX (importação manual).
+- **O módulo de investimentos será gratuito?**  
+  Detalhes serão divulgados na v3.0 (2027).
+- Veja mais em [FAQ](./docs/faq.md)
 
-## 🔒 Segurança e Privacidade
+### Licença
 
-O MrFinancas prioriza a segurança dos dados financeiros dos usuários:
-
-- Criptografia de dados sensíveis
-- Autenticação de dois fatores
-- Conformidade com LGPD/GDPR
-- Backups regulares e automáticos
-- Monitoramento de atividades suspeitas
-
-Para reportar vulnerabilidades de segurança, entre em contato diretamente via security@mrfinancas.com.
-
-## ❓ Perguntas Frequentes (FAQ)
-
-**P: O MrFinancas é gratuito?**
-R: Sim, o MrFinancas possui uma versão gratuita com funcionalidades básicas. Existem planos premium com recursos avançados.
-
-**P: Posso acessar meus dados offline?**
-R: Sim, o aplicativo web funciona como PWA, permitindo acesso offline e sincronização posterior.
-
-**P: Como são armazenados meus dados financeiros?**
-R: Todos os dados são criptografados e armazenados em servidores seguros. Você tem controle total sobre seus dados.
-
-<!-- **P: O sistema integra com meu banco?**
-R: Estamos desenvolvendo integrações com os principais bancos através de APIs de Open Banking. -->
-
-Para mais perguntas, consulte nossa [FAQ completa](./docs/faq.md).
-
-## 📜 Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+Licenciado sob [MIT](LICENSE).
 
 ## 📞 Contato
 
-Marcos Burghausen - [GitHub](https://github.com/marcos-burghausen)
-
-Link do Projeto: [https://github.com/marcos-burghausen/MrFinancas](https://github.com/marcos-burghausen/MrFinancas)
+Marcos Burghausen - [GitHub](https://github.com/marcos-burghausen)  
+Projeto: [https://github.com/marcos-burghausen/MrFinancas](https://github.com/marcos-burghausen/MrFinancas)
 
 ---
 

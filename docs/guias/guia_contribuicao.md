@@ -2,151 +2,251 @@
 
 # Guia de Contribuição para o MrFinancas
 
-Obrigado pelo seu interesse em contribuir para o MrFinancas! Este documento fornece diretrizes e instruções para ajudar você a contribuir com o projeto.
+Obrigado pelo seu interesse em contribuir para o MrFinanças, um aplicativo de gestão financeira pessoal! Este guia fornece diretrizes para ajudar você a contribuir de forma eficaz.
 
 ## Código de Conduta
 
-Ao participar deste projeto, você concorda em manter um ambiente respeitoso e colaborativo para todos os colaboradores.
+Ao contribuir, você concorda em seguir nosso [Código de Conduta](./CODE_OF_CONDUCT.md), mantendo um ambiente respeitoso, inclusivo e colaborativo para todos.
 
 ## Como Posso Contribuir?
 
 ### Reportando Bugs
 
-Se você encontrou um bug, por favor, abra uma issue no GitHub com as seguintes informações:
+Se encontrar um bug:
 
-- Título claro e descritivo
-- Passos detalhados para reproduzir o problema
-- Comportamento esperado e comportamento atual
-- Screenshots (se aplicável)
-- Informações sobre seu ambiente (navegador, sistema operacional, etc.)
+1. Verifique se o problema já foi reportado nas [issues](https://github.com/SEU_USUARIO/MrFinancas/issues).
+2. Abra uma nova issue com:
+   - Título descritivo (e.g., "Erro ao criar transação com valor negativo").
+   - Passos para reproduzir o problema.
+   - Comportamento esperado vs. atual.
+   - Screenshots ou logs, se aplicável.
+   - Ambiente: navegador, sistema operacional, versão da aplicação.
 
 ### Sugerindo Melhorias
 
-Para sugerir melhorias ou novas funcionalidades:
+Para propor novas funcionalidades ou melhorias:
 
-1. Verifique se sua ideia já foi sugerida nas issues existentes
-2. Abra uma nova issue descrevendo sua sugestão em detalhes
-3. Explique por que essa melhoria seria útil para o projeto
+1. Consulte as [issues](https://github.com/SEU_USUARIO/MrFinancas/issues) e [requisitos](./docs/requisitos.md) para evitar duplicatas.
+2. Abra uma issue descrevendo:
+   - A melhoria proposta (e.g., "Adicionar suporte a transações recorrentes").
+   - Benefícios para o projeto (e.g., alinhamento com RF05.3).
+   - Possíveis desafios técnicos.
 
-### Pull Requests
+### Contribuindo com Código
 
-1. Fork o repositório e crie seu branch a partir da `main`
-2. Se você adicionou código que deve ser testado, adicione testes
-3. Se necessário, atualize a documentação
-4. Certifique-se de que todos os testes passam
-5. Verifique se seu código segue os padrões de estilo do projeto
-6. Envie seu pull request!
+1. Fork o repositório e crie um branch a partir da `main` (e.g., `feat/add-recurring-transactions`).
+2. Adicione testes para novas funcionalidades.
+3. Atualize a documentação (e.g., `./docs/documentacao_api.md`, fluxogramas, diagramas de sequência).
+4. Certifique-se de que os testes passam.
+5. Siga os padrões de estilo do projeto.
+6. Envie um pull request (PR) vinculando à issue correspondente.
+
+### Contribuindo com Documentação
+
+- Atualize arquivos em `./docs/` (e.g., `requisitos.md`, `documentacao_api.md`).
+- Adicione ou refine fluxogramas e diagramas de sequência em `./docs/fluxos/` e `./docs/sequencias/`.
+- Use Markdown e Mermaid para diagramas.
+- Exemplo: Adicionar um novo diagrama de sequência para um endpoint em `./docs/sequencias/`.
 
 ## Configuração do Ambiente de Desenvolvimento
 
 ### Pré-requisitos
 
-- [Node.js](https://nodejs.org/) versão X.X ou superior
-- [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
-- [Banco de dados XYZ]
+- **PHP** 8.1 ou superior
+- **Composer** 2.x
+- **Node.js** 16.x ou superior
+- **NPM** 8.x ou **Yarn** 1.x
+- **MySQL** 8.0 ou superior
+- **Redis** (para filas)
+- Conta AWS (para S3, SNS, SES)
+- Conta Google Cloud (para Calendar API)
 
 ### Configuração Inicial
 
-1. Clone o repositório:
+1. **Clone o repositório**:
+
 ```bash
 git clone https://github.com/SEU_USUARIO/MrFinancas.git
 cd MrFinancas
 ```
 
-2. Instale as dependências:
+2. **Instale dependências do backend**:
+
 ```bash
+composer install
+```
+
+3. **Instale dependências do frontend**:
+
+```bash
+cd frontend
 npm install
 # ou
 yarn install
 ```
 
-3. Configure as variáveis de ambiente:
+4. **Configure variáveis de ambiente**:
+
 ```bash
 cp .env.example .env
-# Edite o arquivo .env com suas configurações
 ```
 
-4. Execute as migrações do banco de dados:
+Edite `.env` com:
+
+- Credenciais MySQL (`DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
+- Chaves AWS (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`, `AWS_BUCKET`).
+- Google OAuth (`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`).
+- Configurações de e-mail (`MAIL_MAILER`, `MAIL_HOST`, `MAIL_USERNAME`, `MAIL_PASSWORD`).
+
+5. **Gere a chave da aplicação**:
+
 ```bash
-npm run migrate
-# ou
-yarn migrate
+php artisan key:generate
 ```
 
-5. Inicie o servidor de desenvolvimento:
+6. **Execute migrações do banco**:
+
 ```bash
+php artisan migrate
+```
+
+7. **Inicie o servidor backend**:
+
+```bash
+php artisan serve
+```
+
+8. **Inicie o servidor frontend**:
+
+```bash
+cd frontend
 npm run dev
 # ou
 yarn dev
 ```
 
+9. **Configure Redis** (opcional, para filas):
+
+   - Instale Redis localmente ou use um serviço gerenciado.
+   - Atualize `.env` (`QUEUE_CONNECTION=redis`, `REDIS_HOST`, `REDIS_PASSWORD`, `REDIS_PORT`).
+
+10. **Configure Google Calendar API**:
+    - Crie um projeto no [Google Cloud Console](https://console.cloud.google.com/).
+    - Habilite a API do Google Calendar.
+    - Gere credenciais OAuth 2.0 e adicione ao `.env`.
+
 ## Estrutura do Projeto
 
 ```
 MrFinancas/
-├── src/
-│   ├── components/   # Componentes reutilizáveis
-│   ├── pages/        # Páginas da aplicação
-│   ├── services/     # Serviços e APIs
-│   └── utils/        # Funções utilitárias
-├── public/           # Arquivos públicos
-├── assets/           # Recursos estáticos
-├── tests/            # Testes automatizados
-└── docs/             # Documentação
+├── backend/              # Código backend (Laravel)
+│   ├── app/              # Core da aplicação
+│   │   ├── Console/      # Comandos de CLI
+│   │   ├── Exceptions/   # Manipulação de exceções
+│   │   ├── Http/         # Controladores, Middleware, Requests
+│   │   ├── Models/       # Modelos Eloquent
+│   │   └── Services/     # Serviços da aplicação
+│   ├── config/           # Configurações
+│   ├── database/         # Migrações e seeds
+│   ├── routes/           # Definição de rotas
+│   └── tests/            # Testes automatizados
+├── frontend/             # Código frontend (Vue.js)
+│   ├── public/           # Arquivos públicos
+│   ├── src/              # Código fonte
+│   │   ├── assets/       # Recursos estáticos
+│   │   ├── components/   # Componentes Vue
+│   │   ├── layouts/      # Layouts da aplicação
+│   │   ├── pages/        # Páginas da aplicação
+│   │   ├── router/       # Configuração de rotas
+│   │   ├── services/     # Serviços e APIs
+│   │   ├── store/        # Gerenciamento de estado (Pinia)
+│   │   └── utils/        # Utilitários
+│   └── tests/            # Testes de frontend
+├── docs/                 # Documentação
+│   ├── api/              # Documentação da API
+│   ├── diagramas/        # Diagramas UML
+│   ├── fluxos/           # Fluxos do sistema
+│   ├── guias/            # Guias de utilização
+│   ├── imagens/          # Imagens da documentação
+│   └── requisitos/       # Documentação de requisitos
+└── docker/               # Configurações Docker
+    ├── mysql/            # Configurações do MySQL
+    ├── nginx/            # Configurações do Nginx
+    ├── php/              # Configurações do PHP
+    └── redis/            # Configurações do Redis
+└── .env.example          # Modelo de variáveis de ambiente
 ```
 
 ## Diretrizes de Estilo
 
 ### Estilo de Código
 
-- Use [Prettier](https://prettier.io/) para formatação
-- Siga o [ESLint](https://eslint.org/) configurado para o projeto
-- Nomeie variáveis e funções de forma descritiva em camelCase
-- Comente código complexo ou não óbvio
+- **Backend (PHP/Laravel)**:
+
+  - Siga [PSR-12](https://www.php-fig.org/psr/psr-12/).
+  - Use [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) (`composer run-script lint`).
+  - Nomeie modelos Eloquent no singular (e.g., `Transaction`, não `Transactions`).
+  - Use camelCase para métodos e snake_case para colunas do banco.
+
+- **Frontend (Vue.js)**:
+
+  - Use [Prettier](https://prettier.io/) para formatação.
+  - Siga [ESLint](https://eslint.org/) com regras do projeto (`npm run lint`).
+  - Nomeie componentes em PascalCase (e.g., `TransactionForm.vue`).
+  - Use camelCase para variáveis e funções.
+
+- **Comentários**:
+  - Comente lógica complexa ou integrações (e.g., Google Calendar API).
+  - Use PHPDoc para métodos no backend.
 
 ### Commits
 
-- Use mensagens de commit claras e descritivas
-- Siga o padrão [Conventional Commits](https://www.conventionalcommits.org/)
+- Siga [Conventional Commits](https://www.conventionalcommits.org/).
 - Exemplos:
-  - `feat: adiciona função de exportação de relatórios`
-  - `fix: corrige cálculo incorreto no resumo mensal`
-  - `docs: atualiza documentação da API`
+  - `feat(transactions): adiciona endpoint para transações recorrentes`
+  - `fix(cards): corrige cálculo de limite disponível`
+  - `docs(api): atualiza documentação de POST /calendar/export`
+  - `test(profile): adiciona testes para PUT /profile/avatar`
 
 ### Documentação
 
-- Atualize a documentação quando necessário
-- Documente novas funcionalidades
-- Mantenha o README atualizado
+- Atualize `./docs/documentacao_api.md` para novos endpoints.
+- Adicione fluxogramas ou diagramas de sequência em `./docs/fluxos/` ou `./docs/sequencias/` para novas funcionalidades.
+- Refira-se aos requisitos em `./docs/requisitos.md` (e.g., RF05 para transações).
+- Use Markdown e Mermaid para consistência.
 
 ## Processo de Review
 
-- Todos os pull requests devem ter pelo menos uma revisão antes de serem mesclados
-- Os revisores devem fornecer feedback construtivo
-- As correções solicitadas devem ser endereçadas antes da mesclagem
+- Todo pull request deve:
+  - Estar vinculado a uma issue.
+  - Passar em todos os testes (backend e frontend).
+  - Incluir atualizações na documentação, se aplicável.
+- Revisores fornecerão feedback construtivo dentro de 48 horas.
+- Resolva comentários antes da mesclagem.
 
 ## Testes
 
-- Adicione testes para novas funcionalidades
-- Certifique-se de que todos os testes passam antes de enviar um pull request
-- Execute os testes:
-```bash
-npm test
-# ou
-yarn test
-```
+- **Backend**: Use PHPUnit para testes unitários e de integração.
+  - Execute: `php artisan test`
+  - Cubra controladores, modelos e serviços.
+- **Frontend**: Use Jest ou Vitest para testes de componentes.
+  - Execute: `cd frontend && npm test`
+  - Cubra componentes e chamadas à API.
+- Certifique-se de que a cobertura de testes é mantida (mínimo 80%).
 
 ## Recursos Adicionais
 
-- [Link para documentação da API]
-- [Link para guia de estilo detalhado]
-- [Link para informações do projeto]
+- [Requisitos do Sistema](./docs/requisitos.md)
+- [Documentação da API](./docs/documentacao_api.md)
+- [Diagramas de Sequência](./docs/sequencias/)
+- [Fluxogramas](./docs/fluxos/)
+- [Laravel Documentation](https://laravel.com/docs)
+- [Vue.js Documentation](https://vuejs.org/guide/introduction.html)
+- [Google Calendar API](https://developers.google.com/calendar/api)
 
 ## Dúvidas?
 
-Se você tiver dúvidas ou precisar de ajuda, entre em contato conosco:
+- Abra uma [issue](https://github.com/SEU_USUARIO/MrFinancas/issues) no GitHub.
+- Entre em contato via [contato@mrfinancas.com](mailto:contato@mrfinancas.com).
 
-- Abra uma issue no GitHub
-- Envie um e-mail para [endereço de e-mail do projeto]
-
-Agradecemos muito sua contribuição para tornar o MrFinancas ainda melhor!
+Agradecemos sua contribuição para tornar o MrFinanças ainda melhor!

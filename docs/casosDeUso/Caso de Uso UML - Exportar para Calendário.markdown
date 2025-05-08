@@ -1,24 +1,20 @@
 🔙 [Retornar à documentação principal](../../README.md)
 
-# Caso de Uso UML: Exportar para Calendário
+# Caso de Uso: Exportar para Calendário
 
 ## Diagrama de Caso de Uso
 
 ```mermaid
-classDiagram
-    class Usuário {
-        +ExportarParaCalendário()
-    }
-    class GoogleCalendar {
-        +CriarEvento()
-    }
+usecaseDiagram
+    actor Usuário
+    actor GoogleCalendar
+    Usuário --> (Exportar para Calendário)
     Usuário --> GoogleCalendar : usa
-    Usuário --> Sistema : interage
 ```
 
 ## Descrição
 
-Permite que o usuário exporte vencimentos de lançamentos para o Google Calendar.
+Permite que o usuário exporte vencimentos de transações para o Google Calendar.
 
 ## Atores
 
@@ -27,34 +23,43 @@ Permite que o usuário exporte vencimentos de lançamentos para o Google Calenda
 
 ## Pré-condições
 
-- Usuário está autenticado.
-- Lançamento possui vencimento.
+- Usuário está autenticado (JWT válido).
+- Transação possui vencimento (`transactions.date`).
 
 ## Pós-condições
 
 - Evento é criado no Google Calendar.
 - Confirmação é exibida.
+- Log de exportação é registrado em `logs`.
 
 ## Fluxo Principal
 
-1. Usuário seleciona lançamento com vencimento.
+1. Usuário seleciona transação com vencimento na tela de transações.
 2. Clica em "Exportar para calendário".
-3. Sistema autentica com Google Calendar.
-4. Cria evento (data, título, descrição).
-5. Exibe confirmação.
+3. Frontend autentica com Google Calendar (OAuth 2.0, scope: `calendar.events`).
+4. Frontend envia `POST /api/calendar/export` com `{ transaction_id }`.
+5. Backend recupera transação de `transactions` e cria evento:
+   - `summary`: "Despesa: {description}" ou "Receita: {description}".
+   - `start`/`end`: `transactions.date`.
+   - `description`: "Valor: R${amount}".
+6. Backend registra ação em `logs` (ação: `export_calendar`, detalhes: `transaction_id`).
+7. Frontend exibe confirmação.
 
 ## Fluxos Alternativos
 
-- **A1**: Falha na autenticação → Exibe erro e retorna à lista.
+- **A1**: Falha na autenticação → Frontend exibe erro 401 ("Falha ao autenticar com Google Calendar").
 
 ## Regras de Negócio
 
-- Apenas lançamentos com vencimento são exportáveis.
-- Títulos incluem tipo (ex.: "Despesa: Aluguel").
+- Apenas transações com `date` são exportáveis.
+- Títulos: "Despesa: Aluguel", "Receita: Salário".
 - Autenticação é armazenada para reutilização.
 
-## Integrações
+## Notas Técnicas
 
-- Usa API do Google Calendar.
-- Integra com lançamentos e faturas.
-- Eventos aparecem em relatórios.
+- **Frontend**: Vue.js, Axios, Google Calendar API client.
+- **Backend**: Laravel, Eloquent (modelo `Transaction`).
+- **Endpoint**: `POST /api/calendar/export`: `{ transaction_id: int }` → `{ event_id: string }`.
+- **Banco**: Tabela `transactions` (`id`, `description`, `amount`, `date`); `logs` (`action`, `details`).
+- **Integrações**: Google Calendar API (scope: `https://www.googleapis.com/auth/calendar.events`).
+- **Segurança**: JWT, OAuth 2.0.
